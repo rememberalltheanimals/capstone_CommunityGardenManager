@@ -1,0 +1,27 @@
+{
+  "name": "capstone_communitygardenmanager",
+  "version": "1.0.0",
+  "description": "CVTC IT Capstone Team 2 project\r Our project will be a website that will allow clients to manage a community garden within their city. This means that a city or person can set up a webpage that can allow users of their website to gain information on any aspects the client would like to display on the site. That can include information such as plots that are available to be used, what times the garden will be open, watering schedules, and plants that would thrive in the environment that the garden is placed in. The basic site will try to include these kinds of information as well to provide an easier time for the client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rememberalltheanimals/capstone_CommunityGardenManager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rememberalltheanimals/capstone_CommunityGardenManager/issues"
+  },
+  "homepage": "https://github.com/rememberalltheanimals/capstone_CommunityGardenManager#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
+    "pg": "^8.10.0"
+  }
+}
