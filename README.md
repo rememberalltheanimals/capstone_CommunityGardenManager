@@ -1,6 +1,8 @@
-# capstone_CommunityGardenManager
-CVTC IT Capstone Team 2 project
-Our project will be a website that will allow clients to manage a community garden within their city. This means that a city or person can set up a webpage that can allow users of their website to gain information on any aspects the client would like to display on the site. That can include information such as plots that are available to be used, what times the garden will be open, watering schedules, and plants that would thrive in the environment that the garden is placed in. The basic site will try to include these kinds of information as well to provide an easier time for the client. 
+# Community Garden Manager
+### capstone_CommunityGardenManager -- CVTC IT Capstone Team 2 project
+Community Garden Manager is a website that will allow clients to manage a community garden within their city. This means that a city or person can use Community Garden Manager to set up a webpage that will allow users to gain information on and completely manage all aspects that a client would like to, right from our site. This includes information on plots that are available to be used, what times the garden will be open, it will help with scheduling events such as watering, weeding, and more, and provide information on plants that would thrive in the environment in which the garden is located. Not only will the site include this kind of information, specific to a client's specific community garden, but it will also provide general information about gardening and plantlife, all while providing a fun and easy to use interface.
 
+Along with the functionality discussed above, Community Garden Manager will also allow for communication, not only between members of the same community garden, but between all users of the site. Clients will be able to share gardening advice and tips, show off their harvests, and ask gardening related questions. This will allow our users to exprience the same sense of community both at the garden and in the comfort of their own home.
+
+## Installation
 This website will utilize JavaScript, Express, and EJS for the front end portion. This way, the developers can make the web pages more dynamic. The back end of the website will use Node JS and PostgreSQL. The Node JS will help work with the JavaScript framework while the PostgreSQL will serve as the database function. 
-
