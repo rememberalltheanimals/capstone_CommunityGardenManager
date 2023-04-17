@@ -3,4 +3,11 @@ CREATE TABLE gardenButtons (
   name TEXT NOT NULL
 );
 
-INSERT INTO gardenButtons (name) VALUES ('Test');
+CREATE TABLE watered (
+  id SERIAL PRIMARY KEY,
+  memberName TEXT NOT NULL
+);
+
+INSERT INTO gardenButtons (name) VALUES ('Eunhae');
+INSERT INTO gardenButtons (name) VALUES ('Levi');
+INSERT INTO gardenButtons (name) VALUES ('Davis');

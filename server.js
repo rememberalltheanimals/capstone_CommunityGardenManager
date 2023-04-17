@@ -44,17 +44,51 @@ express()
 
     try {
       const client = await pool.connect();
-      const id = req.body.id;
-      const insertSql = `INSERT INTO gardenbuttons (name) VALUES (concat('Child of ', $1::text)) RETURNING id AS new_id;`;
+      const name = req.body.name;
+
+      const insertSql = `INSERT INTO watered (membername) VALUES ($1::text) RETURNING membername AS new_name;`;
       const selectSql = "SELECT LOCALTIME;";
 
-      const insert = await client.query(insertSql, [id]);
+      const eunhaeSql = "SELECT COUNT(membername) FROM watered WHERE membername = 'Eunhae';";
+      const leviSql = "SELECT COUNT(membername) FROM watered WHERE membername = 'Levi';";
+      const davisSql = "SELECT COUNT(membername) FROM watered WHERE membername = 'Davis';";
+
+      const insert = await client.query(insertSql, [name]);
+
       const select = await client.query(selectSql);
 
+      const eunhae = await client.query(eunhaeSql);
+      const levi = await client.query(leviSql);
+      const davis = await client.query(davisSql);
+
       const response = {
-        newId: insert ? insert.rows[0] : null,
-        when: select ? select.rows[0] : null
+        newName: insert ? insert.rows[0] : null,
+        when: select ? select.rows[0] : null,
+
+        Eunhae: eunhae ? eunhae.rows[0] : null,
+        Levi: levi ? levi.rows[0] : null,
+        Davis: davis ? davis.rows[0] : null
       };
+      res.json(response);
+      client.release();
+    }
+    catch (err) {
+      console.error(err);
+      res.json({
+        error: err
+      });
+    }
+  })
+  .post("/reset", async(req, res) => {
+    res.set({
+      "Content-Type": "application/json"
+    });
+
+    try {
+      const client = await pool.connect();
+      const resetSql = "delete from watered;";
+      const reset = await client.query(resetSql);
+      const response = {};
       res.json(response);
       client.release();
     }
