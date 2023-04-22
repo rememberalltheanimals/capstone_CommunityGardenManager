@@ -5,57 +5,35 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <h1>Hello, Welcome to Community Garden Manager!</h1>
-    <h3>Keep track of how many times each member waters the community garden each month.</h3>
-    <h4>Click a button with a member's name to indicate they watered the garden!</h4>
-    <% buttons.forEach(function(b) { %>
-      <button id="<%= b.id %>" onclick="javascript:send('<%= b.name %>');">
-        <%= b.name %>
-      </button>
-    <% }); %>
-    <button id="reset" onclick="javascript:reset();">Reset Counts</button>
-    <p id="output"></p>
-    <script>
-      const output = document.getElementById("output");
-      const send = async function(buttonName) {
-        const response = await fetch("/log", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            name: buttonName
-          })
-        });
-        const result = await response.json();
-        if (result.error) {
-          output.innerHTML = `<strong>ERROR: ${result.error.routine}</strong>`;
-        }
-        else {
-          output.innerHTML = `Garden was watered by  ${result.newName.new_name} at ${result.when.localtime}!`;
-          output.innerHTML += `<p><h4>Watering Counts for the Month</h4>Eunhae: ${result.Eunhae.count} <br> Levi: ${result.Levi.count} <br> Davis: ${result.Davis.count}</p>`;
-        }
-      };
-      const reset = async function() {
-        const response = await fetch("/reset", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-          })
-        });
-        const result = await response.json();
-        
-        if (result.error){
-          output.innerHTML = `<strong>ERROR: ${result.error.routine}</strong>`;
-        }
-        else {
-          output.innerHTML = `<p><h4>All counts reset to zero, You can now begin recording watering counts!</h4>`;
-        }
-      };
-    </script>
+  <div class="wrapper">
+    <div class="intro">
+      <h1>Hello, Welcome to [Community Garden of Client]!</h1>
+      <h3>This site is managed by [Client].</h3>
+      <h4>Become a member and be able to check out the garden!</h4>
+    </div>
+    <div class="plots">
+      <h3>Garden Plots</h3>
+      <img src="images/IMG_9829.JPG" alt="Garden Plot">
+    </div>
+    <div class="tools">
+      <h3>Garden tools</h3>
+      <img src="images/IMG_9835.JPG" alt="Garden Tools">
+    </div>
+    <div class="plants">
+      <h3>Garden Plants</h3>
+      <img src="images/IMG_9837.JPG" alt="Garden Plants">
+    </div>
+    <div class="zone">
+      <h3>Weather Zone</h3>
+      <img src="images/IMG_9830.JPG" alt="Weather Zone">
+    </div>
+    <div class="water">
+      <h3>Watering Schedule</h3>
+      <img src="images/IMG_9798.JPG" alt="Watering Schedule">
+    </div><div class="about">
+      <h3>About us</h3>
+      <p><a href=""><img src="images/IMG_9802.JPG" alt="About Us"></a></p>
+    </div>
+  </div>
   </body>
 </html>
