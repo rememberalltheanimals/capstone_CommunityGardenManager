@@ -17,6 +17,7 @@ express()
   .use(express.urlencoded({ extended: true }))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "ejs")
+  /*        This code was from the original Tech Stack Validation program, we can keep it here, for future reference
   .get("/", async(req, res) => {
     try {
       const client = await pool.connect();
@@ -98,5 +99,33 @@ express()
         error: err
       });
     }
+    */
+
+// This is the navigation, as far as server.js is concerned
+// may need to change the format on these based on what each page does
+// may need to add more for functions
+  .get('/', async function (req, res) {
+    res.render('pages/index')
+  })
+  .get('/pageA', (req, res) => {
+    res.render('pages/pageA')
+  })
+  .get('/pageB', (req, res) => {
+    res.render('pages/pageB')
+  })
+  .get('/pageC', (req, res) => {
+    res.render('pages/pageC')
+  })
+  .get('/pageD', (req, res) => {
+    res.render('pages/pageD')
+  })
+  .get('/pageE', (req, res) => {
+    res.render('pages/pageE')
+  })
+  .get('/pageF', (req, res) => {
+    res.render('pages/pageF')
+  })
+  .get('/pageG', (req, res) => {
+    res.render('pages/pageG')
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
