@@ -1,0 +1,106 @@
+
+/* CSS for pages, but not for Home page */
+
+body {
+  background: rgba(173, 236, 207, 0.8);
+}
+
+header h1 {
+  font-size: 70px;
+  text-align: center;
+  color: #000;
+}
+
+main {
+  background: #FFF;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  border-radius: 115px;
+  color: #000;
+  margin: 10px auto;
+  width: 1090px;
+  
+}
+
+h2{
+    font-size: 30px;
+    margin: 2em;
+    text-align: center;
+}
+
+ p {
+  margin: 20px;
+  text-align: center;
+  font-size: 25px;
+}
+
+img {
+  margin:10px;
+  position: relative;
+  left: 30%;
+}
+
+nav {
+  margin: 10px auto;
+  width: 1090px;
+  
+}
+
+nav ul li a {
+  margin: 10px 1px;
+  font-size: 22px;
+  width: 80px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+nav ul a {
+  background-color: rgba(2, 75, 57, 0.651);
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  padding: 0 20px;
+  font-size: 125%;
+  display: block;
+    
+}
+
+nav ul a:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+footer {
+
+  border-color: #FFF;
+  border-width: 1px;
+  border-style: none;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center;
+  color: #000;
+  border-top: 1px solid;
+}
