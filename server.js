@@ -128,4 +128,10 @@ express()
   .get('/pageG', (req, res) => {
     res.render('pages/pageG')
   })
+  .get('/pageH', (req, res) => {
+    res.render('pages/pageH')
+  })
+  .get('/pageI', (req, res) => {
+    res.render('pages/pageI')
+  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
