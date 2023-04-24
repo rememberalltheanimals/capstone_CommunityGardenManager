@@ -1,6 +1,9 @@
 
 /* CSS for pages, but not for Home page */
-
+* {
+  cursor: url(images/shovel.cur), auto;
+ }
+ 
 body {
   background: rgba(173, 236, 207, 0.8);
 }
