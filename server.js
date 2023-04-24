@@ -134,4 +134,7 @@ express()
   .get('/pageI', (req, res) => {
     res.render('pages/pageI')
   })
+  .get('/ZoneMap', (req, res) => {
+    res.render('pages/ZoneMap')
+  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
