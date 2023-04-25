@@ -1,66 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>USDA Map</title>
-  <link rel="stylesheet" type="text/css" href="public/images/otherPages.css">
-</head>
-<body>
-  <%- include('../shared/header.ejs') %>
-  
-  <%
-  var zipCode = document.getElementById('zipCode');
-  var subBtn = document.getElementById('subBtn');
-  var resultContainer = document.getElementById('resultContainer');
+<%- include('../shared/header.ejs') %>
+  <main id="ZoneMap">
+      
+      <h1>Hardiness Zone Finder</h1>
+      
+      <div class='inputContainer'>
+        <label> Enter Your Zip Code to Find Your Growing Zone: </label>
+        <input type='text' placeholder='Zip Code' id='zipCodeTB'/>
+        <button id='submitButton'>Submit</button>
+      </div>
 
-  async function fetchZone(zip) {
+      <div id="resultsContainer">
 
-    var response = await fetch(`https://phzmapi.org/${zip}.json`);
-    var zoneResult = await response.json();
+      </div>
 
-    return zoneResult
-  }
+      <script>
 
-  subBtn.addEventListener('click', async () => {
+        let zipCodeTB = document.getElementById('zipCodeTB')
+        let submitButton = document.getElementById('submitButton')
+        let resultsContainer = document.getElementById('resultsContainer')
 
-    var zipcode = zipCode.value;
+        async function fetchZone(zip) {
+          let response = await fetch(`https://phzmapi.org/${zip}.json`)
+          let zoneResults = await response.json()
+          return zoneResults
+        }
 
-    const zipCodeRange = /^\d{5}$/
+        submitButton.addEventListener('click', async () => {
 
-    if (zipCodeRange.text(zipcode)) {
+          let zipCode = zipCodeTB.value
 
-      var result = await fetchZone(zipcode);
+          const zipCodeRegex = /^\d{5}$/
 
-      var zone = `<div class="zoneDisplay">
-        <h2>Your Growing Zone</h2>
-        <span>Zone: ${result.zone}</span>
-        <span>Temp Range: ${result.temperature_range}</span>
-      </div>`
+          if (zipCodeRegex.test(zipCode)) {
 
-      resultContainer.innerHTML = zone
-      zipCode.value = ''
+            let result = await fetchZone(zipCode)
 
-    } else {
-      resultContainer.innerHTML = 'Please enter a valid zip code'
-      zipCode.value = ''
-    }
-  })
-  %>
+            let zone = `<div class="zoneDisplay">
+              <h3>Your Growing Zone</h3>
+              <span>Zip Code: ${zipCode}</span>
+              <span>Zone: ${result.zone}</span>
+              <span>Min Temp Range: ${result.temperature_range}</span>
+              <span>Lat: ${result.coordinates.lat}</span>
+              <span>Long: ${result.coordinates.lon}</span>
+              <img src="images/ZoneMap.jpg" alt="Heardiness Zone Map" width="500" height="400">
+              </div>`
 
-  <h1>Know your climate zone for growing plants</h1>
+            resultsContainer.innerHTML = zone
+            zipCodeTB.value = ''
 
-  <div class="inputContainer">
-    <label class="input">Enter your zip code to find your growing zone:</label>
-    <input type="text" placeholder="zip code" id="zipCode" class="input"/>
-    <button id="subBtn" class="input">Submit</button>
-  </div>
+          } else {
+            resultsContainer.innerHTML = 'Please enter a valid zip code'
+            zipCodeTB.value = ''
+          }
 
-  <div id="resultContainer"></div>
+        })
 
-  <script src="app.js"></script>
 
-  <%- include('../shared/footer.ejs') %>
-</body>
-</html>
+      </script>
+      
+      <%- include('../shared/footer.ejs') %>
+  </main>

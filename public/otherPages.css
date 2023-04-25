@@ -84,15 +84,6 @@ nav ul a:hover {
   color: #FFF;
 }
 
-
-
-
-
-
-
-
-
-
 footer {
 
   border-color: #FFF;
@@ -106,4 +97,44 @@ footer {
   text-align: center;
   color: #000;
   border-top: 1px solid;
+}
+
+#ZoneMap {
+  text-align: center;
+}
+
+
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+}
+
+.inputContainer label, input {
+  margin: 10px;
+}
+
+.input {
+  margin: 5px;
+}
+
+.zoneDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  width: 35em;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.zoneDisplay img {
+  position: relative;
+  left: 0px;
+}
+
+.zoneDisplay span {
+  margin: 10px;
 }
