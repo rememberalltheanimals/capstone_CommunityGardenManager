@@ -1,9 +1,66 @@
-<%- include('../shared/header.ejs') %>
-  <main>
-    <h2>Welcome to Community Garden Manager's Zone Map</h2>
-    <p>Web page currently under construction.</p>
-    <p>Thank you for your paitence.</p>
-    <img src="images/construction.gif" alt="Garden Plot">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USDA Map</title>
+  <link rel="stylesheet" type="text/css" href="public/images/otherPages.css">
+</head>
+<body>
+  <%- include('../shared/header.ejs') %>
+  
+  <%
+  var zipCode = document.getElementById('zipCode');
+  var subBtn = document.getElementById('subBtn');
+  var resultContainer = document.getElementById('resultContainer');
 
-      <%- include('../shared/footer.ejs') %>
-  </main>
+  async function fetchZone(zip) {
+
+    var response = await fetch(`https://phzmapi.org/${zip}.json`);
+    var zoneResult = await response.json();
+
+    return zoneResult
+  }
+
+  subBtn.addEventListener('click', async () => {
+
+    var zipcode = zipCode.value;
+
+    const zipCodeRange = /^\d{5}$/
+
+    if (zipCodeRange.text(zipcode)) {
+
+      var result = await fetchZone(zipcode);
+
+      var zone = `<div class="zoneDisplay">
+        <h2>Your Growing Zone</h2>
+        <span>Zone: ${result.zone}</span>
+        <span>Temp Range: ${result.temperature_range}</span>
+      </div>`
+
+      resultContainer.innerHTML = zone
+      zipCode.value = ''
+
+    } else {
+      resultContainer.innerHTML = 'Please enter a valid zip code'
+      zipCode.value = ''
+    }
+  })
+  %>
+
+  <h1>Know your climate zone for growing plants</h1>
+
+  <div class="inputContainer">
+    <label class="input">Enter your zip code to find your growing zone:</label>
+    <input type="text" placeholder="zip code" id="zipCode" class="input"/>
+    <button id="subBtn" class="input">Submit</button>
+  </div>
+
+  <div id="resultContainer"></div>
+
+  <script src="app.js"></script>
+
+  <%- include('../shared/footer.ejs') %>
+</body>
+</html>

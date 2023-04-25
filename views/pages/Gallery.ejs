@@ -1,9 +1,52 @@
-<%- include('../shared/header.ejs') %>
-  <main>
-    <h2>Welcome to Community Garden Manager's Gallery</h2>
-    <p>Web page currently under construction.</p>
-    <p>Thank you for your paitence.</p>
-    <img src="images/construction.gif" alt="Garden Plot">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Page</title>
+  <link rel="stylesheet" type="text/css" href="public/images/otherPages.css">
+</head>
+<body>
+  <%- include('../shared/header.ejs') %>
 
-      <%- include('../shared/footer.ejs') %>
-  </main>
+  <%
+    var images = [
+    "public/images/#",
+    "public/images/#",
+    "public/images/#",
+    "public/images/#",
+    "public/images/#"
+    ];
+
+    const galleryContainer = document.getElementById("gallery-container");
+    const preveBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    var currentImageIndex = 0;
+
+    function showCurrentImage() {
+      galleryContainer.innerHTML = `<img src="${images[currentImageIndex]}">`;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentImageIndex = Math.max(0, currentImageIndex - 1);
+      showCurrentImage();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentImageIndex = Math.min(images.lengh - 1, currentImageIndex + 1);
+      showCurrentImage();
+    });
+
+    showCurrentImage();
+  %>
+
+  <%- include('../shared/footer.ejs') %>
+
+  <div id="gallery-container"></div>
+  <button id="prev-btn">Prev</button>
+  <button id="next-btn">Next</button>
+
+</body>
+</html>
