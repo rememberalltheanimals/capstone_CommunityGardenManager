@@ -138,3 +138,26 @@ footer {
 .zoneDisplay span {
   margin: 10px;
 }
+
+.login {
+  position: relative;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form_message--error {
+  color: #8A0000;
+  text-align: center;
+}
+
+.form_button {
+  position: relative;
+  left: 50px;
+}

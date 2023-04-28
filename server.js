@@ -140,4 +140,7 @@ express()
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
   })
+  .get('/loginAndSignUp', (req, res) => {
+    res.render('pages/loginAndSignUp')
+  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
