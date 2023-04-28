@@ -3,7 +3,7 @@
  }
 
  * {
-  cursor: url(images/shovel.cur), auto;
+  cursor: url(images/shovel.cur), text;
  }
 
  body {
@@ -61,6 +61,7 @@
    transition: .4s color;
  }
  
+ /* Do we want to get rid of the blur effect */
  div#columns:hover figure:not(:hover) {
    opacity: 0.4;
  }
@@ -89,6 +90,12 @@
   bottom: 70px;
 }
 
+.button:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  color: #FFF;
+}
+
 #intro h3 {
   position: relative;
   bottom: 80px;
@@ -98,3 +105,98 @@
   position: relative;
   bottom: 80px;
 }
+
+
+/* Navigation 1 */
+/**/
+nav {
+  margin: 10px auto;
+  width: 1090px;
+  
+}
+
+nav ul li a {
+  margin: 10px 2px;
+  font-size: 22px;
+  width: 85px;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  
+}
+nav ul a {
+  background-color: rgba(2, 75, 57, 0.651);
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  padding: 0 20px;
+  font-size: 125%;
+  display: block;
+    
+}
+
+nav ul a:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  color: #FFF;
+}
+/**/
+/* End of navigation 1 */
+
+/* Start of Navigation 2 */
+/*
+nav {
+  margin: 10px auto;
+  float: left;
+  position: relative;
+  left: 15em;
+}
+
+nav ul li a {
+  margin: 10px 1px;
+  font-size: 22px;
+  width: 157px;
+  padding: 15px;
+}
+
+ul {
+  list-style-type: none;
+  display: block;
+}
+nav ul a {
+  background-color: rgba(2, 75, 57, 0.651);
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  padding: 0 20px;
+  font-size: 125%;
+  display: block;
+    
+}
+
+nav ul a:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+
+*/
+/* End of Navigation 2 */
