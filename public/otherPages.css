@@ -141,7 +141,7 @@ footer {
 
 .login {
   position: relative;
-  left: 40px;
+  bottom: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,6 +152,10 @@ footer {
   text-align: center;
 }
 
+.form_input--input{
+  cursor: text;
+}
+
 .form_message--error {
   color: #8A0000;
   text-align: center;
@@ -159,5 +163,16 @@ footer {
 
 .form_button {
   position: relative;
-  left: 50px;
+  left: 60px;
+  cursor: pointer;
+}
+
+.form_link{
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form_link:hover {
+  text-decoration: underline;
 }
