@@ -140,6 +140,9 @@ express()
   .get('/PlantSearch', (req, res) => {
     res.render('pages/PlantSearch')
   })
+  .get('/PlantSearch2', (req, res) => {
+    res.render('pages/PlantSearch2')
+  })
   .post('/searchZone', async function (req, res) {
     const Input = req.body.Input
     const apiKey = process.env.Perenual_API_KEY
@@ -151,15 +154,6 @@ express()
     })
 
     const result = await response.json()
-    let string = ''
-
-    //console.log(result.data[0].common_name);
-
-    //console.log(result.data.length);
-   // for (var i = 0; i <= result.data.length; i++){
-    //  string += 'name' + i + ': result.data[' + i + '].common_name,'
-   //}
-   //console.log(result.data.length)
 
     if(result.data.length >= 5){
       res.json({ name1: result.data[0].common_name, name2: result.data[1].common_name, name3: result.data[2].common_name, name4: result.data[3].common_name, name5: result.data[4].common_name })
