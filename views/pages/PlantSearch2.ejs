@@ -1,0 +1,78 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+      
+    <h2>Welcome to Community Garden Manager's Plant Search Page</h2>
+
+    <div id="searchForm2">
+      
+      <h3 id="search-header2">Search for Garden Plants by Common Name</h3>
+    
+      <div id="search-form2">
+        <input type="text" name="Search2" id="search-field2" class="search-form-field" placeholder="Tomato">
+    
+        <button id="search-form-submit2">Search</button>
+      </div>
+    </div>
+    <div id="displaySearchResults2">
+      <h3>Results will display here!</h3>
+    </div>
+
+      <script>
+
+        const resultsDisplay2 = document.getElementById('displaySearchResults2')
+        const Input2 = document.getElementById('search-field2')
+        const submitButton2 = document.getElementById('search-form-submit2')
+
+        async function fetchPlant(Input2) {
+          let response = await fetch(`https://openfarm.cc/api/v1/crops/${Input2}`)
+          let results = await response.json()
+          return results
+        }
+
+        submitButton2.addEventListener('click', async () => {
+
+
+            let InputData = ''
+
+            // API uses all lower case letters and a - instead of spacing this section converts use input to correct format
+            InputData = Input2.value.toLowerCase();
+
+            const myArray = InputData.split(" ");
+            let dataString = '';
+
+            if (myArray.length === 1) {
+              dataString = InputData;
+            } else if (myArray.length >= 2) {
+              for (var i = 0; i <= myArray.length-1; i++){
+                if (i != myArray.length-1) {
+                  dataString += myArray[i] + "-";
+                } else {
+                  dataString += myArray[i];
+                }
+              }
+            }
+
+            let result = await fetchPlant(dataString)
+
+            if (result.data && result.data != null && result.data != ''){
+              resultsDisplay2.innerHTML = `<h3><em>Plant Name: </em> ${result.data.attributes.name}</h3>
+                            <h3><em>Binomial Name: </em>${result.data.attributes.binomial_name}</h3>
+                            <h3><em>Description: </em>${result.data.attributes.description}</h3>
+                            <h3><em>Sun Requirements: </em>${result.data.attributes.sun_requirements}</h3>
+                            <h3><em>Growing Degree Days: </em>${result.data.attributes.growing_degree_days} days</h3>
+                            <h3><em>Sowing Method: </em>${result.data.attributes.sowing_method}</h3>
+                            <h3><em>Spread(diameter): </em>${result.data.attributes.spread} centimeters</h3>
+                            <h3><em>Row Spacing: </em>${result.data.attributes.row_spacing} centimeters</h3>
+                            <h3><em>Height: </em>${result.data.attributes.height} centimeters</h3>
+                            <h3><em>Image:</em><br> <img id="resultNameImg" src="${result.data.attributes.main_image_path}" height='200' width='200'></h3>`
+
+            } else {
+              resultsDisplay2.innerHTML = `<h3>Please check your spelling and try again! Hint: No plurals, Do not use 's' at the end, search for carrot, not carrots. </h3>`
+           }
+        })
+
+
+      </script>
+      
+      <%- include('../shared/footer.ejs') %>
+  </main>

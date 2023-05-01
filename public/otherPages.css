@@ -1,7 +1,7 @@
 
 /* CSS for pages, but not for Home page */
 * {
-  cursor: url(images/shovel.cur), auto;
+  cursor: url(images/shovel.cur), text;
  }
  
 body {
@@ -51,9 +51,10 @@ nav {
 }
 
 nav ul li a {
-  margin: 10px 1px;
+  margin: 10px 2px;
   font-size: 22px;
-  width: 57px;
+  width: 85px;
+  padding: 5px;
 }
 
 ul {
@@ -72,6 +73,7 @@ nav ul a {
   padding: 0 20px;
   font-size: 125%;
   display: block;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.8);
     
 }
 
@@ -102,8 +104,6 @@ footer {
 #ZoneMap {
   text-align: center;
 }
-
-
 
 .inputContainer {
   display: flex;
