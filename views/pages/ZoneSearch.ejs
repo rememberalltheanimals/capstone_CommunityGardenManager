@@ -1,0 +1,77 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Community Garden Manager's Plant Search Page</h2>
+
+    <div id="searchForm">
+      
+      <h3 id="search-header">Search for Plants by Zone Number: Enter 1 - 13</h3>
+
+      <div id="search-form">
+        <input type="text" name="Search" id="search-field" class="search-form-field" placeholder="4a">
+
+        <button id="search-form-submit">Search</button>
+      </div>
+    </div>
+    <div id="displaySearchResults">
+      <h3>Results will display here!</h3>
+    </div>
+
+<script>
+
+    const resultsDisplay = document.getElementById('displaySearchResults')
+    const Input = document.getElementById('search-field')
+    const submitButton = document.getElementById('search-form-submit')
+
+    const submit = async function () {
+
+      resultsDisplay.innerHTML = '<h1>Searching...</h1>'
+
+      if (Input.value > 13 || Input.value <= 0) {
+        resultsDisplay.innerHTML = `<h3>Be sure to enter a numeric value between 1 and 13. Try again!</h3>`
+        return
+      } else {
+        DataValue = Input.value
+      }
+      
+
+      const data = {
+        Input: DataValue
+      }
+
+      const response = await fetch('/searchZone', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      
+      if (response.ok) {
+        const result = await response.json()
+
+
+         if (result){
+          
+          resultsDisplay.innerHTML = `<div><h3>The top 5 Plants to grow in your area are:</h2> 
+                                      <h4>1. ${result.name1}</h4>
+                                      <h4>2. ${result.name2}</h4> 
+                                      <h4>3. ${result.name3}</h4>
+                                      <h4>4. ${result.name4}</h4>
+                                      <h4>5. ${result.name5}</h4>`
+              return
+       }
+      }
+
+      resultsDisplay.innerHTML = '<h1>Search Error: Please be sure to enter a numeric value!</h1>'
+    
+    } // submit function end
+    
+    submitButton.addEventListener('click', submit.bind(null))
+ 
+</script>
+
+
+
+    <%- include('../shared/footer.ejs') %>
+  </main>

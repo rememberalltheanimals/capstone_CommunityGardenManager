@@ -125,22 +125,73 @@ express()
   .get('/pageF', (req, res) => {
     res.render('pages/pageF')
   })
-  .get('/pageG', (req, res) => {
-    res.render('pages/pageG')
-  })
-  .get('/pageH', (req, res) => {
-    res.render('pages/pageH')
-  })
-  .get('/pageI', (req, res) => {
-    res.render('pages/pageI')
-  })
   .get('/ZoneMap', (req, res) => {
     res.render('pages/ZoneMap')
+  })
+  .get('/ZoneSearch', (req, res) => {
+    res.render('pages/ZoneSearch')
   })
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
   })
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
+  })
+  .get('/PlantSearch', (req, res) => {
+    res.render('pages/PlantSearch')
+  })
+  .post('/searchZone', async function (req, res) {
+    const Input = req.body.Input
+    const apiKey = process.env.Perenual_API_KEY
+    const urlApi = `https://perenual.com/api/species-list?key=${apiKey}&hardiness=${Input}`
+
+    const response = await fetch(urlApi, {
+      method: 'GET',
+      headers: {}
+    })
+
+    const result = await response.json()
+    let string = ''
+
+    //console.log(result.data[0].common_name);
+
+    //console.log(result.data.length);
+   // for (var i = 0; i <= result.data.length; i++){
+    //  string += 'name' + i + ': result.data[' + i + '].common_name,'
+   //}
+   //console.log(result.data.length)
+
+    if(result.data.length >= 5){
+      res.json({ name1: result.data[0].common_name, name2: result.data[1].common_name, name3: result.data[2].common_name, name4: result.data[3].common_name, name5: result.data[4].common_name })
+    } else if (result.data.length === 2){
+      res.json({ name1: result.data[0].common_name, name2: result.data[1].common_name, name3: null, name4: null, name5: null})
+    } else if (result.data.length === 1){
+      res.json({ name1: result.data[0].common_name, name2: null, name3: null, name4: null, name5: null})
+    } else if (result.data.length === 0){
+      res.json({ name1: 'Our database does not currently include plant information for this region, please try again later.', name2: null, name3: null, name4: null, name5: null})
+    } else {
+      res.status(400).send('Not found, please try again. Thank You!')
+      res.end()
+    }
+
+  })
+  .post('/searchName', async function (req, res) {
+    const Input2 = req.body.Input2
+    const urlApi2 = `https://openfarm.cc/api/v1/crops/${Input2}`
+
+    const response = await fetch(urlApi2, {
+      method: 'GET',
+      headers: {}
+    })
+
+    const result = await response.json()
+
+    if (result.data && result.data != null && result.data != ''){  /// Appropriate valdiation for search field
+      res.json({ name: result.data.attributes.name, Bname: result.data.attributes.binomial_name, description: result.data.attributes.description, sunReq: result.data.attributes.sun_requirements, days: result.data.attributes.growing_degree_days, method: result.data.attributes.sowing_method, spread: result.data.attributes.spread, row: result.data.attributes.row_spacing, height: result.data.attributes.height, image: result.data.attributes.main_image_path })
+    } else {
+      res.status(400).send('Not found, please try again. Thank You!')
+      res.end()
+    }
+
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

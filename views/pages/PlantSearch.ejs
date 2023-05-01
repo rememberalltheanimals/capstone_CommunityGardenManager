@@ -1,0 +1,95 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Community Garden Manager's Plant Search Page</h2>
+
+    <div id="searchForm2">
+      
+      <h3 id="search-header2">Search for Plants by Common Name</h3>
+    
+      <div id="search-form2">
+        <input type="text" name="Search2" id="search-field2" class="search-form-field" placeholder="Common Name">
+    
+        <button id="search-form-submit2">Search</button>
+      </div>
+    </div>
+    <div id="displaySearchResults2">
+      <h3>Results will display here!</h3>
+    </div>
+
+
+<script>
+
+
+    const resultsDisplay2 = document.getElementById('displaySearchResults2')
+    const Input2 = document.getElementById('search-field2')
+    const submitButton2 = document.getElementById('search-form-submit2')
+
+    const submit2 = async function () {
+
+      resultsDisplay2.innerHTML = '<h1>Searching...</h1>'
+
+
+      // API uses all lower case letters and a - instead of spacing this section converts use input to correct format
+      InputData = Input2.value.toLowerCase();
+
+      const myArray = InputData.split(" ");
+      let dataString = '';
+
+      if (myArray.length === 1) {
+        dataString = InputData;
+      } else if (myArray.length >= 2) {
+        for (var i = 0; i <= myArray.length-1; i++){
+          if (i != myArray.length-1) {
+            dataString += myArray[i] + "-";
+          } else {
+            dataString += myArray[i];
+          }
+        }
+      };
+
+      const data = {
+        Input2: dataString 
+      }
+
+      const response = await fetch('/searchName', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+
+        if (result){
+          resultsDisplay2.innerHTML =  `<h3><em>Plant Name: </em> ${result.name}</h3>
+                                        <h3><em>Binomial Name: </em>${result.Bname}</h3>
+                                        <h3><em>Description: </em>${result.description}</h3>
+                                        <h3><em>Sun Requirements: </em>${result.sunReq}</h3>
+                                        <h3><em>Growing Degree Days: </em>${result.days} days</h3>
+                                        <h3><em>Sowing Method: </em>${result.method}</h3>
+                                        <h3><em>Spread(diameter): </em>${result.spread} centimeters</h3>
+                                        <h3><em>Row Spacing: </em>${result.row} centimeters</h3>
+                                        <h3><em>Height: </em>${result.height} centimeters</h3>
+                                        <h3><em>Image:</em><br> <img id="resultNameImg" src="${result.image}" height='200' width='200'></h3>`
+              return
+        }
+      }
+
+      resultsDisplay2.innerHTML = `<h1>Search Error: Make sure your spelling is correct!</h1>`
+
+    } 
+
+
+    submitButton2.addEventListener('click', submit2.bind(null))
+
+
+    
+</script>
+
+
+
+    <%- include('../shared/footer.ejs') %>
+  </main>
