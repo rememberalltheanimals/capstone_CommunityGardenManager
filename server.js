@@ -137,9 +137,11 @@ express()
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
-  .get('/PlantSearch', (req, res) => {
-    res.render('pages/PlantSearch')
-  })
+  // Would not work on Render, when combined with /searchName and PlantSearch.ejs
+  //
+  //.get('/PlantSearch', (req, res) => {
+  //  res.render('pages/PlantSearch')
+  //})
   .get('/PlantSearch2', (req, res) => {
     res.render('pages/PlantSearch2')
   })
@@ -169,6 +171,10 @@ express()
     }
 
   })
+
+  /* /searchName and PlantSearch.ejs, would not work on Render, not sure what the issue is.
+  // No api key to save, updated to newer Node version, not sure
+  //
   .post('/searchName', async function (req, res) {
     const Input2 = req.body.Input2
     const urlApi2 = `https://openfarm.cc/api/v1/crops/${Input2}`
@@ -187,5 +193,5 @@ express()
       res.end()
     }
 
-  })
+  })*/
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

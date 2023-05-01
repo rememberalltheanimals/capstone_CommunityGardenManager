@@ -8,7 +8,7 @@
       <h3 id="search-header2">Search for Garden Plants by Common Name</h3>
     
       <div id="search-form2">
-        <input type="text" name="Search2" id="search-field2" class="search-form-field" placeholder="Common Name">
+        <input type="text" name="Search2" id="search-field2" class="search-form-field" placeholder="Tomato">
     
         <button id="search-form-submit2">Search</button>
       </div>
@@ -54,7 +54,8 @@
 
             let result = await fetchPlant(dataString)
 
-            let display = `<h3><em>Plant Name: </em> ${result.data.attributes.name}</h3>
+            if (result.data && result.data != null && result.data != ''){
+              resultsDisplay2.innerHTML = `<h3><em>Plant Name: </em> ${result.data.attributes.name}</h3>
                             <h3><em>Binomial Name: </em>${result.data.attributes.binomial_name}</h3>
                             <h3><em>Description: </em>${result.data.attributes.description}</h3>
                             <h3><em>Sun Requirements: </em>${result.data.attributes.sun_requirements}</h3>
@@ -65,15 +66,9 @@
                             <h3><em>Height: </em>${result.data.attributes.height} centimeters</h3>
                             <h3><em>Image:</em><br> <img id="resultNameImg" src="${result.data.attributes.main_image_path}" height='200' width='200'></h3>`
 
-
-
-
-
-           // console.log(result.data.attribute)
-            resultsDisplay2.innerHTML = display
-
-
-
+            } else {
+              resultsDisplay2.innerHTML = `<h3>Please check your spelling and try again! Hint: No plurals, Do not use 's' at the end, search for carrot, not carrots. </h3>`
+           }
         })
 
 
