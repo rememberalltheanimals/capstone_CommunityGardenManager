@@ -241,4 +241,24 @@ footer {
   position: relative;
   left: 5px;
   
+.signUp {
+  position: relative;
+  left: 50px;
+  bottom: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.signUp h1 {
+  position: relative;
+  right: 50px;
+}
+
+.form_button--signUp {
+  position: relative;
+  top: 10px;
+  left: 60px;
+  cursor: pointer;
 }
