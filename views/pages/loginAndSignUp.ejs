@@ -1,6 +1,14 @@
 <%- include('../shared/header.ejs') %>
   <main>
     <h2>Welcome to Community Garden Manager's Login and Sign Up Page</h2>
+    <script>
+        function createAccount() {
+        document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
+        document.getElementsByClassName('login')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
+      }
+      
+    </script>
     <div class="login">
       <form action="" class="form" id="login">
         <h1 class="form_title">Login</h1>
@@ -21,19 +29,47 @@
           <a href="#" class="form_link">Forgot your password</a>
         </p>
         <p class="form_text">
-          <a class="form_link" id="linkCreateAccount">Create an account</a>
+          <a class="form_link" onclick="createAccount()">Create an account</a>
         </p>
     </div>
     <div class="signUp">
-      <form action="" class="form" id="login">
-        <h1 class="form_title">Login</h1>
+      <form action="" class="form" id="signUp">
+        <h1 class="form_title">Sign Up</h1>
         <div class="form_input">
           <input type="text" class="form_input--input" autofocus placeholder="Name">
         </div>
         <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Username">
+        </div>
+        <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Email">
+        </div>
+        <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Phone Number">
+        </div>
+        <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Zip Code">
+        </div>
+        <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Garden Time">
+        </div>
+        <div class="form_input">
           <input type="password" class="form_input--input" autofocus placeholder="Password">
         </div>
-        <button class="form_button" type="submit">Submit</button>
+        <div class="form_input">
+          <input type="text" class="form_input--input" autofocus placeholder="Confirm Password">
+        </div>
+        <div class="form_garden">
+          <label for="cars">Choose a garden:</label>
+
+            <select name="gardens" id="gardens">
+               <option value="carLot">Car Lot Gardens</option>
+               <option value="flower">Budding Flowers Garden</option>
+               <option value="clearRiver">Clear River Garden</option>
+               <option value="primeEarth">Prime Earth Gardens</option>
+            </select>
+        </div>
+        <button class="form_button--signUp" type="submit">Submit</button>
       </form>
     </div>
       <%- include('../shared/footer.ejs') %>
