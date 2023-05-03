@@ -39,6 +39,7 @@
 
             const myArray = InputData.split(" ");
             let dataString = '';
+            let finalString = '';
 
             if (myArray.length === 1) {
               dataString = InputData;
@@ -52,7 +53,21 @@
               }
             }
 
-            let result = await fetchPlant(dataString)
+		
+		
+		        //let subString = string.substr(0,string.length-1);
+	          	var lastCharacter = dataString.substr(dataString.length-1, 1);
+	          	var secondLastCharacter = dataString.substr(dataString.length-2, 1);
+
+            if (lastCharacter != 's' || dataString === 'grapes' ) {
+			        finalString = dataString;
+	        	} else if (secondLastCharacter != 'e' || dataString === 'apples'|| dataString === 'pineapples'){
+			        finalString = dataString.replace(/.$/,'');
+		        } else {
+			        finalString = dataString.replace('es', '');
+		        }
+
+            let result = await fetchPlant(finalString)
 
             if (result.data && result.data != null && result.data != ''){
               resultsDisplay2.innerHTML = `<h3><em>Plant Name: </em> ${result.data.attributes.name}</h3>
@@ -67,7 +82,7 @@
                             <h3><em>Image:</em><br> <img id="resultNameImg" src="${result.data.attributes.main_image_path}" height='200' width='200'></h3>`
 
             } else {
-              resultsDisplay2.innerHTML = `<h3>Please check your spelling and try again! Hint: No plurals, Do not use 's' at the end, search for carrot, not carrots. </h3>`
+              resultsDisplay2.innerHTML = `<h3>Please check your spelling and try again!</h3>`
            }
         })
 
