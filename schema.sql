@@ -23,5 +23,4 @@ CREATE TABLE members (
 INSERT INTO gardenButtons (name) VALUES ('Eunhae');
 INSERT INTO gardenButtons (name) VALUES ('Levi');
 INSERT INTO gardenButtons (name) VALUES ('Davis');
-INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden)
-VALUES ();
+
