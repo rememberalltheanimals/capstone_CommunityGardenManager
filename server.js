@@ -134,6 +134,9 @@ express()
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
   })
+  .get('/Discussion', (req, res) => {
+    res.render('pages/Discussion')
+  })
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
