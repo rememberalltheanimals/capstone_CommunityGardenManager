@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views/pages/index.html"));
 });
 
-app.post('/loginAndSignUp', (req, res) => {
+app.post('/register', (req, res) => {
   const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
 
   pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
@@ -161,8 +161,58 @@ express()
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
   })
+  .get('/Discussion', (req, res) => {
+    res.render('pages/Discussion')
+  })
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
+  })
+  /*
+  .post('/register', (req, res) => {
+    const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
+  
+    pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
+      if (err) {
+        console.error(err);
+        res.send('Error registering member.');
+      } else {
+        console.log(result);
+        res.send('Member registered successfully.');
+      }
+    });
+  });*/
+  .post('/register', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      const client = await pool.connect()
+
+    
+
+      const name = req.body.name;
+      const username = req.body.username;
+      const email = req.body.email;
+      const phone = req.body.phoneNumber;
+      const zip = req.body.zipCode;
+      const gardenTime = req.body.gardenTime;
+      const password = req.body.password;
+      const garden = req.body.garden;
+
+      if (name === null || name === '' || username === null || username === '' || email === null || email === '' || phone === null || phone === '' || zip === null || zip === '' || gardenTime === null || gardenTime === '' || password === null || password === '' || garden === null || garden === '') {
+        res.status(400).send('Make sure to fill in all information. Thank You!')
+        res.end()
+      } else {
+        const insertSignUpSql = "INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES('" + name + "', '" + username + "', '" + email + "', '" + phone + "', '" + zip + "', '" + gardenTime + "', '" + password + "', '" + garden + "');"
+
+        await client.query(insertSignUpSql)
+
+        res.json({ ok: true })
+        client.release()
+      }
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
   })
   // Would not work on Render, when combined with /searchName and PlantSearch.ejs
   //
