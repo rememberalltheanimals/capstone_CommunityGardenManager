@@ -119,8 +119,8 @@ express()
   .get('/pageD', (req, res) => {
     res.render('pages/pageD')
   })
-  .get('/pageE', (req, res) => {
-    res.render('pages/pageE')
+  .get('/Design', (req, res) => {
+    res.render('pages/Design')
   })
   .get('/pageF', (req, res) => {
     res.render('pages/pageF')
