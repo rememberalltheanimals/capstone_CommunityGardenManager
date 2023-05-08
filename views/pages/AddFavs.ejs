@@ -1,0 +1,74 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Community Garden Manager's Add Favorites page</h2>
+    <div id="addFavForm">
+      
+      <h3 id="addFav-header">Add Plants To Your Favorites</h3>
+
+      <form id="addFav-form">
+        <input type="text" name="username" id="username-field" class="addFav-form-field" placeholder="Username">
+        <input type="password" name="password" id="password-field" class="addFav-form-field" placeholder="Password">
+        <input type="text" name="plantName" id="plantName-field" class="addFav-form-field" placeholder="Plant Common Name">
+        <input type="text" name="plantDescription" id="plantDescription-field" class="addFav-form-field" placeholder="Brief Description or Why it is a Favorite">
+        <input type="text" name="growingNotes" id="growingNotes-field" class="addFav-form-field" placeholder="Add notes about growing or any other notes">
+        <input type="submit" value="Add" id="addFav-form-submit">
+      </form>
+    </div>
+
+    <%- include('../shared/footer.ejs') %>
+  </main>
+
+  <script>
+        
+    const main = document.querySelector('main')
+    
+    const username = document.getElementById('username-field')
+    const password = document.getElementById('password-field')
+    const plantName = document.getElementById('plantName-field')
+    const plantDescription = document.getElementById('plantDescription-field')
+    const growingNotes = document.getElementById('growingNotes-field')
+    const submitButton = document.getElementById('addFav-form-submit')
+        
+const submit = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+
+  const user = username.value
+  const pass = password.value
+  const plant = plantName.value
+  const description = plantDescription.value
+  const notes = growingNotes.value
+
+  const data = {
+    username: user,
+    password: pass,
+    plantName: plant,
+    plantDescription: description,
+    growingNotes: notes
+  }
+
+    const response = await fetch('/AddToFav', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = `<h1>Success! The plant '${plant}' has been added to your favorites!<br>Thank You, ${user}!</h1>`
+      return
+    }
+  }
+
+  main.innerHTML = '<h1>Server error</h1>'
+
+ 
+}
+submitButton.addEventListener('click', (e) => submit())
+</script>
