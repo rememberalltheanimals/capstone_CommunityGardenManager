@@ -160,8 +160,6 @@ express()
     try {
       const client = await pool.connect()
 
-    
-
       const name = req.body.name;
       const username = req.body.username;
       const email = req.body.email;
@@ -171,11 +169,12 @@ express()
       const password = req.body.password;
       const garden = req.body.garden;
 
-      if (name === null || name === '' || username === null || username === '' || email === null || email === '' || phone === null || phone === '' || zip === null || zip === '' || gardenTime === null || gardenTime === '' || password === null || password === '' || garden === null || garden === '') {
+      if (name === null || name === '' || username === null || username === '' || email === null || email === '' || phone === null || phone === '' || zip === null || gardenTime === null || gardenTime === '' || password === null || password === '' || garden === null || garden === '') {
         res.status(400).send('Make sure to fill in all information. Thank You!')
         res.end()
       } else {
-        const insertSignUpSql = "INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES('" + name + "', '" + username + "', '" + email + "', '" + phone + "', '" + zip + "', '" + gardenTime + "', '" + password + "', '" + garden + "');"
+        const insertSignUpSql = "INSERT INTO members2 (membername, username, email, phonenumber, zipcode, gardentime, memberpassword, garden) VALUES('" + name + "', '" + username + "', '" + email + "', '" + phone + "', '" + zip + "', '" + gardenTime + "', '" + password + "', '" + garden + "');"
+
 
         await client.query(insertSignUpSql)
 

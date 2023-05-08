@@ -25,7 +25,7 @@
         </p>
     </div>
     <div class="signUp">
-      <form action="" class="form" id="signUp">
+      <form class="form" id="signUp">
         <h1 class="form_title">Sign Up</h1>
         <div class="form_input">
           <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
@@ -49,7 +49,7 @@
           <input type="password" class="form_input--input" id="password" autofocus placeholder="Password">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Confirm Password">
+          <input type="password" class="form_input--input" autofocus placeholder="Confirm Password">
         </div>
         <div class="form_garden">
           <label for="gardens">Choose a garden:</label>
@@ -61,7 +61,7 @@
                <option value="primeEarth">Prime Earth Gardens</option>
             </select>
         </div>
-        <button class="form_button--signUp" type="submit" id="submitRegister">Submit</button>
+        <input type="submit" value="Create" id="submitRegister">
       </form>
       <div id="Success">
         
@@ -137,14 +137,14 @@
 
 const main = document.querySelector('main')
 
-const n = document.getElementById('name')
-const u = document.getElementById('userName')
-const e = document.getElementById('email')
-const p = document.getElementById('phoneNumber')
-const z = document.getElementById('zipCode')
-const gt = document.getElementById('gardenTime')
-const pw = document.getElementById('password')
-const g = document.getElementById('gardens')
+const Users_name = document.getElementById('name')
+const Users_username = document.getElementById('userName')
+const Users_email = document.getElementById('email')
+const Users_phoneNumber = document.getElementById('phoneNumber')
+const Users_zipCode = document.getElementById('zipCode')
+const Users_gardentTime = document.getElementById('gardenTime')
+const Users_password = document.getElementById('password')
+const Users_garden = document.getElementById('gardens')
 
 const submitButton = document.getElementById('submitRegister')
     
@@ -153,14 +153,14 @@ const subRegister = async function () {
 
   main.innerHTML = '<h1>Please wait</h1>'
 
-  const name = n.value;
-  const username = u.value;
-  const email = e.value;
-  const phone = p.value;
-  const zip = z.value;
-  const gardenTime = gt.value;
-  const password = pw.value;
-  const garden = g.value
+  const name = Users_name.value;
+  const username = Users_username.value;
+  const email = Users_email.value;
+  const phone = Users_phoneNumber.value;
+  const zip = Users_zipCode.value;
+  const gardenTime = Users_gardentTime.value;
+  const password = Users_password.value;
+  const garden = Users_garden.value
 
 
   const data = {
@@ -174,7 +174,7 @@ const subRegister = async function () {
     garden: garden
   }
 
-    const response = await fetch('/', {
+    const response = await fetch('/register', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -186,7 +186,7 @@ const subRegister = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = `<h1>Success!</h1>`
+      main.innerHTML = `<h1>Success! Welcome ${username}, your account has been created.</h1>`
       return
     }
   }

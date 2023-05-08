@@ -23,6 +23,19 @@ CREATE TABLE members (
   memberPassword TEXT NOT NULL,
   garden TEXT NOT NULL
 );
+
+CREATE TABLE members2 (
+  id SERIAL PRIMARY KEY,
+  memberName TEXT NOT NULL,
+  userName TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phoneNumber TEXT NOT NULL,
+  zipCode TEXT NOT NULL,
+  gardenTime TEXT NOT NULL,
+  memberPassword TEXT NOT NULL,
+  garden TEXT NOT NULL
+);
+
 CREATE TABLE plantFavorites(
   favorite_id SERIAL PRIMARY KEY,
   user_username TEXT NOT NULL,
