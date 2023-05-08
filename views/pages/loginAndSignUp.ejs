@@ -1,71 +1,6 @@
 <%- include('../shared/header.ejs') %>
   <main>
     <h2>Welcome to Community Garden Manager's Login and Sign Up Page</h2>
-    <script>
-        function createAccount() {
-        document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
-        document.getElementsByClassName('login')[0].style.visibility = 'hidden';
-        document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
-      }
-
-      // Get references to the input fields
-        const nameInput = document.querySelector('input[placeholder="Name"]');
-        const usernameInput = document.querySelector('input[placeholder="Username"]');
-        const emailInput = document.querySelector('input[placeholder="Email"]');
-        const phoneInput = document.querySelector('input[placeholder="Phone Number"]');
-        const zipInput = document.querySelector('input[placeholder="Zip Code"]');
-        const gardenInput = document.querySelector('select[name="gardens"]');
-        const timeInput = document.querySelector('input[placeholder="Garden Time"]');
-        const passwordInput = document.querySelector('input[type="password"]');
-
-      // Add event listener to the form
-          const form = document.querySelector('form');
-         form.addEventListener('submit', (event) => {
-        
-      // Prevent the default form submission behavior
-        event.preventDefault();
-        
-      // Retrieve the input values and store them in variables
-        const name = nameInput.value;
-        const username = usernameInput.value;
-        const email = emailInput.value;
-        const phone = phoneInput.value;
-        const zip = zipInput.value;
-        const garden = gardenInput.value;
-        const time = timeInput.value;
-        const password = passwordInput.value;
-        
-      // Construct the request body
-          const requestBody = {
-            name: name,
-            username: username,
-            email: email,
-            phone: phone,
-            zip: zip,
-            garden: garden,
-            time: time,
-            password: password
-          };
-        
-        // Make a POST request to the server with the form data
-            fetch('/api/members', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(requestBody)
-            })
-            .then(response => response.json())
-            .then(data => {
-              // Handle the server's response
-              console.log(data);
-            })
-            .catch(error => {
-              console.error(error);
-            });
-      });
-      
-    </script>
     <div class="login">
       <form action="" class="form" id="login">
         <h1 class="form_title">Login</h1>
@@ -93,31 +28,31 @@
       <form action="" class="form" id="signUp">
         <h1 class="form_title">Sign Up</h1>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Name">
+          <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Username">
+          <input type="text" class="form_input--input" id="userName" autofocus placeholder="Username">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Email">
+          <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Phone Number">
+          <input type="text" class="form_input--input" id="phoneNumber" autofocus placeholder="Phone Number">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Zip Code">
+          <input type="text" class="form_input--input" id="zipCode" autofocus placeholder="Zip Code">
         </div>
         <div class="form_input">
-          <input type="text" class="form_input--input" autofocus placeholder="Garden Time">
+          <input type="text" class="form_input--input" id="gardenTime" autofocus placeholder="Garden Time">
         </div>
         <div class="form_input">
-          <input type="password" class="form_input--input" autofocus placeholder="Password">
+          <input type="password" class="form_input--input" id="password" autofocus placeholder="Password">
         </div>
         <div class="form_input">
           <input type="text" class="form_input--input" autofocus placeholder="Confirm Password">
         </div>
         <div class="form_garden">
-          <label for="cars">Choose a garden:</label>
+          <label for="gardens">Choose a garden:</label>
 
             <select name="gardens" id="gardens">
                <option value="carLot">Car Lot Gardens</option>
@@ -126,8 +61,140 @@
                <option value="primeEarth">Prime Earth Gardens</option>
             </select>
         </div>
-        <button class="form_button--signUp" type="submit">Submit</button>
+        <button class="form_button--signUp" type="submit" id="submitRegister">Submit</button>
       </form>
+      <div id="Success">
+        
+      </div>
     </div>
       <%- include('../shared/footer.ejs') %>
   </main>
+
+  <script>
+    function createAccount() {
+    document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
+    document.getElementsByClassName('login')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
+  }
+
+  /*// Get references to the input fields
+    const nameInput = document.querySelector('input[placeholder="Name"]');
+    const usernameInput = document.querySelector('input[placeholder="Username"]');
+    const emailInput = document.querySelector('input[placeholder="Email"]');
+    const phoneInput = document.querySelector('input[placeholder="Phone Number"]');
+    const zipInput = document.querySelector('input[placeholder="Zip Code"]');
+    const gardenInput = document.querySelector('select[name="gardens"]');
+    const timeInput = document.querySelector('input[placeholder="Garden Time"]');
+    const passwordInput = document.querySelector('input[type="password"]');
+
+  // Add event listener to the form
+      const form = document.querySelector('form');
+     form.addEventListener('submit', (event) => {
+    
+  // Prevent the default form submission behavior
+    event.preventDefault();
+    
+  // Retrieve the input values and store them in variables
+    const name = nameInput.value;
+    const username = usernameInput.value;
+    const email = emailInput.value;
+    const phone = phoneInput.value;
+    const zip = zipInput.value;
+    const garden = gardenInput.value;
+    const time = timeInput.value;
+    const password = passwordInput.value;
+    
+  // Construct the request body
+      const requestBody = {
+        name: name,
+        username: username,
+        email: email,
+        phone: phone,
+        zip: zip,
+        garden: garden,
+        time: time,
+        password: password
+      };
+    
+    // Make a POST request to the server with the form data
+        fetch('/api/members', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the server's response
+          console.log(data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  });
+  */
+
+const main = document.querySelector('main')
+
+const n = document.getElementById('name')
+const u = document.getElementById('userName')
+const e = document.getElementById('email')
+const p = document.getElementById('phoneNumber')
+const z = document.getElementById('zipCode')
+const gt = document.getElementById('gardenTime')
+const pw = document.getElementById('password')
+const g = document.getElementById('gardens')
+
+const submitButton = document.getElementById('submitRegister')
+    
+const subRegister = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+  const name = n.value;
+  const username = u.value;
+  const email = e.value;
+  const phone = p.value;
+  const zip = z.value;
+  const gardenTime = gt.value;
+  const password = pw.value;
+  const garden = g.value
+
+
+  const data = {
+    name: name,
+    username: username,
+    email: email,
+    phoneNumber: phone,
+    zipCode: zip,
+    gardenTime: gardenTime,
+    password: password,
+    garden: garden
+  }
+
+    const response = await fetch('/', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = `<h1>Success!</h1>`
+      return
+    }
+  }
+
+  main.innerHTML = '<h1>Server error</h1>'
+
+
+}
+submitButton.addEventListener('click', (e) => subRegister())
+
+</script>
