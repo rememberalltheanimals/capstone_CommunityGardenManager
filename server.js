@@ -146,8 +146,8 @@ express()
   .get('/pageD', (req, res) => {
     res.render('pages/pageD')
   })
-  .get('/pageE', (req, res) => {
-    res.render('pages/pageE')
+  .get('/Design', (req, res) => {
+    res.render('pages/Design')
   })
   .get('/pageF', (req, res) => {
     res.render('pages/pageF')
@@ -197,6 +197,37 @@ express()
       res.end()
     }
 
+  })
+  .get('/AddFavs', (req, res) => {
+    res.render('pages/AddFavs')
+  })
+  .post('/AddToFav', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      const client = await pool.connect()
+
+      const username = req.body.username
+      const password = req.body.password
+      const plantName = req.body.plantName
+      const plantDescription = req.body.plantDescription
+      const growingNotes = req.body.growingNotes
+
+      if (username === null || username === '' || password === null || password === '' || plantName === null || plantName === '' || plantDescription === null || plantDescription === '' || growingNotes === null || growingNotes === '') {
+        res.status(400).send('Make sure to fill in all information. Thank You!')
+        res.end()
+      } else {
+        const insertFavsSql = "INSERT INTO plantFavorites (user_username, user_password, plant_name, plant_description, growth_notes) VALUES('" + username + "', '" + password + "', '" + plantName + "', '" + plantDescription + "', '" + growingNotes + "');"
+
+        await client.query(insertFavsSql)
+
+        res.json({ ok: true })
+        client.release()
+      }
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
   })
 
   /* /searchName and PlantSearch.ejs, would not work on Render, not sure what the issue is.
