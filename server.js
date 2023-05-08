@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views/pages/index.html"));
 });
 
-app.post('/register', (req, res) => {
+app.post('/loginAndSignUp', (req, res) => {
   const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
 
   pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
