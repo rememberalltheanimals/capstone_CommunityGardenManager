@@ -10,33 +10,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-/** */
-const app = express();
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/pages/index.html"));
-});
-
-app.post('/register', (req, res) => {
-  const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
-
-  pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
-    if (err) {
-      console.error(err);
-      res.send('Error registering member.');
-    } else {
-      console.log(result);
-      res.send('Member registered successfully.');
-    }
-  });
-});
-/** */
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}.`);
-});
 
 express()
   .use(express.static(path.join(__dirname, "public")))
