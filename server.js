@@ -310,7 +310,7 @@ express()
     const client = await pool.connect();
     const postSql = "SELECT * FROM feed2;";
     const posts = await client.query(postSql);
-    console.log(posts);
+    //console.log(posts);
     const args = {
       "posts": posts ? posts.rows : null
     };

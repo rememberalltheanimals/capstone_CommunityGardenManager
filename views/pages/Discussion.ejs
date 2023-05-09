@@ -27,6 +27,17 @@
   </main>
 
   <script>
+
+    const normalizeDate = function (src){
+        var date1 = new Date(src); //Convert src to date
+
+        var date2 = date1.toISOString(); //Convert date to correct format date
+
+        var formattedDate = date2.split('T')[0]; //Gets rid of time stamp
+                
+        return formattedDate //return formatted date
+
+    }
         
     const main = document.querySelector('main')
 
@@ -61,12 +72,18 @@
         const result = await response.json()
         if (result.ok) {
           main.innerHTML = `<h1 id="discussionSuccess">Success! Your message was added to the database!</h1><h3 class="comingSoon">The message board will be coming soon!</h3>`
+
+          setTimeout(function() {
+            location.reload();
+          }, 1000);
+    
           return
         }
       }
 
       main.innerHTML = `<h1 id="discussionFail">Server error</h1>`
-    
+
+      
     }
 
     subBtn.addEventListener('click', (e) => discuss())
