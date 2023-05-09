@@ -177,7 +177,7 @@ footer {
   text-decoration: underline;
 }
 
-#search-form, #search-form2, #addFav-form, #addFav-header {
+#search-form, #search-form2, #addFav-form, #addFav-header, #searchFavs-form, #searchFavs-header {
   align-self: flex-start;
   display: grid;
   justify-items: center;
@@ -188,11 +188,21 @@ footer {
   width: 300px;
 }
 
-#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail {
+#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail, #discussionSuccess, #discussionFail, #discussion-form, #memFavHeader, .comingSoon {
   text-align: center;
 }
 
+#searchFavs-form-submit {
+  margin-bottom: 10px;
+}
 
+table, th, td {
+  border:1px solid black;
+  border-color: black;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+}
 
 .search-form-field, .search-form-field2 {
   color: #3a3a3a;

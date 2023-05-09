@@ -1,0 +1,47 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Community Garden Manager's Member's Favorites Page</h2>
+    <div id="searchFavsForm">
+      
+        <h3 id="searchFavs-header">View Garden Member's Favorites</h3>
+
+        <div id="searchFavs-form">
+          <input type="text" name="username" id="username-field" class="searchFavs-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="searchFavs-form-field" placeholder="Password">
+          <button id="searchFavs-form-submit">View All</button>
+        </div>
+    </div>
+    <%- include('../shared/footer.ejs') %>
+  </main>
+  <script>
+
+    
+    const main = document.querySelector('main')
+    const username = document.getElementById('username-field')
+    const password = document.getElementById('password-field')
+
+    const submitButton = document.getElementById('searchFavs-form-submit')
+          
+    const submit = async function () {
+
+
+      main.innerHTML = '<h1>Please wait</h1>'
+        
+      if(username.value === null || username.value === '' || password.value === null || password.value === ''){
+          main.innerHTML = `<h3>Please be sure to enter username and password to view Audience Favorites</h3>`
+      } else {
+        main.innerHTML = `<h2 id="memFavHeader">Member's Favorites</h2><h3 class="comingSoon">This page will soon only let you see the favorites of the user you search for!</h3><div><table><tr><th>Username</th><th>Plant Name</th><th>Description</th><th>Growing Notes</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.plant_name %></td><td><%= favorite.plant_description %></td><td><%= favorite.growth_notes %></td></tr><%_ } _%></table></div>`     
+      }
+    
+// End of your code ////////////////////////////////////////
+}
+submitButton.addEventListener('click', (e) => submit())
+      
+      
+      
+      
+      
+      
+     
+      
+  </script>

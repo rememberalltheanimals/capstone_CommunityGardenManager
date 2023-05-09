@@ -9,7 +9,30 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false
   }
-});
+})
+
+const query = async function (sql, params) {
+  let client
+  let results = []
+  try {
+    client = await pool.connect()
+    const response = await client.query(sql, params)
+    if (response && response.rows) {
+      results = response.rows
+    }
+  } catch (err) {
+    console.error(err)
+  }
+  if (client) client.release()
+  return results
+}
+
+const queryMemberFavorites = async function () {
+  const sql = 'SELECT * FROM plantFavorites;'
+
+  const results = await query(sql)
+  return { favorites: results }
+}
 
 express()
   .use(express.static(path.join(__dirname, "public")))
@@ -114,7 +137,7 @@ express()
     res.render('pages/pageB')
   })
   .get('/pageC', (req, res) => {
-    res.render('pages/pageC')
+    res.render('pages/pageB')
   })
   .get('/pageD', (req, res) => {
     res.render('pages/pageD')
@@ -251,6 +274,10 @@ express()
       res.status(400).json({ ok: false })
     }
   })
+  .get('/favorites', async function (req, res) {
+    const favorites = await queryMemberFavorites()
+    res.render('pages/favorites', favorites)
+  })
 
   /* /searchName and PlantSearch.ejs, would not work on Render, not sure what the issue is.
   // No api key to save, updated to newer Node version, not sure
@@ -280,19 +307,43 @@ express()
 .get('/Discussion', (req, res) => {
   res.render('pages/Discussion')
 })
+
+/*
+.get('/Discussion', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const postSql = "SELECT * FROM feed2;";
+    const posts = await client.query(postSql);
+    const args = {
+      "posts": posts ? posts.rows : null
+    };
+    res.render("pages/Discussion", args);
+  }
+  catch (err) {
+    console.error(err);
+    res.set({
+      "Content-Type": "application/json"
+    });
+    res.json({
+      error: err
+    });
+  }
+})
+*/
+
 .post('/MessageBoard', async function (req, res) {
   res.set({ 'Content-Type': 'application/json' })
 
   try {
     const client = await pool.connect()
 
-    const gardenNews = req.body.communication
+    const idea = req.body.communication
 
     if (idea === null || idea === '') {
       res.status(400).send('Please type in your ideas. Thank You!')
       res.end()
     } else {
-      const insertIdeaSql = "INSERT INTO feed (idea) VALUES('" + idea + "');"
+      const insertIdeaSql = "INSERT INTO feed2 (idea) VALUES('" + idea + "');"
 
       await client.query(insertIdeaSql)
 

@@ -1,14 +1,14 @@
 <%- include('../shared/header.ejs') %>
   <main>
     <h2>Share the ideas!</h2>
-    <div>
+    <div id="discussion-form">
       
       <h3>Ask questions, Make suggestions, Get the answers</h3>
 
-      <form>
+      <form id="discussionForm">
         <input type="text" name="memo" id="memo" placeholder="Type here...">
         
-        <input type="submit" id="sub">
+        <input type="submit" value="Post" id="sub">
       </form>
     </div>
 
@@ -18,6 +18,8 @@
   <script>
         
     const main = document.querySelector('main')
+
+    const board = document.querySelector('board')
     
     const postIt = document.getElementById('memo')
     
@@ -31,7 +33,7 @@
 
       const communicate = postIt.value
 
-      const info = {
+      const data = {
         communication: communicate
       }
 
@@ -41,19 +43,20 @@
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(info)
+        body: JSON.stringify(data)
       })
 
       if (response.ok) {
         const result = await response.json()
         if (result.ok) {
-          main.innerHTML = `<h1>Success!</h1>`
+          main.innerHTML = `<h1 id="discussionSuccess">Success! Your message was added to the database!</h1><h3 class="comingSoon">The message board will be coming soon!</h3>`
           return
         }
       }
 
-      main.innerHTML = `<h1>Server error</h1>`
+      main.innerHTML = `<h1 id="discussionFail">Server error</h1>`
     
     }
+
     subBtn.addEventListener('click', (e) => discuss())
   </script>

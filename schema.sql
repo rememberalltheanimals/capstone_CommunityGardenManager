@@ -10,6 +10,12 @@ CREATE TABLE feed (
   idea VARCHAR(300)
 );
 
+CREATE TABLE feed2 (
+  id SERIAL PRIMARY KEY,
+  idea TEXT NOT NULL
+);
+
+
 CREATE TABLE gardenButtons (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL
