@@ -6,13 +6,19 @@
   cursor: url(images/shovel.cur), text;
  }
 
+ header h1 {
+  font-size: 70px;
+  text-align: center;
+  color: #000;
+}
+
  body {
    background: rgba(173, 236, 207, 0.8);
    font-family: Calluna, Arial, sans-serif;
    min-height: 1000px;
  }
 
- #intro {
+ #introDesktop {
   text-align: center;
  }
 
@@ -88,23 +94,23 @@
   color: #FFF;
 }
 
-#intro h3 {
+#introDesktop h3 {
   position: relative;
   bottom: 80px;
 }
 
-#intro h4 {
+#introDesktop h4 {
   position: relative;
   bottom: 80px;
 }
 
 #desktopNav {
   margin: 10px auto;
-  width: 1090px;
+  width: 1000px;
   
 }
 
-.dropdown {
+.dropdown, #tabletNav, #introSmaller{
   display: none;
 }
 
@@ -144,6 +150,96 @@
   color: #FFF;
 }
 
+@media screen and (max-width: 1100px) { 
+  #logButton {
+    position: relative;
+    left: -510px;
+    margin-top: 100px;
+   }
+
+   #introDesktop {
+    display:none;
+   }
+
+   #introSmaller {
+    display: block;
+    text-align: center;
+   }
+
+   #introSmaller h3 {
+    position: relative;
+    bottom: 50px;
+  }
+  
+  #introSmaller h4 {
+    position: relative;
+    bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 960px) { 
+  #desktopNav, #logButton {
+    display: none;
+   }
+
+   #tabletNav {
+    display: block;
+   }
+
+
+  
+  #tabletNav ul li a {
+    margin: 10px 2px;
+    margin-left: 0px;
+    font-size: 22px;
+    padding: 5px;
+  }
+  
+  #tabletNav ul {
+    list-style-type: none;
+
+    
+  }
+  #tabletNav ul a {
+    background-color: rgba(2, 75, 57, 0.651);
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+    padding: 0 20px;
+    font-size: 125%;
+    display: block;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.8);
+  }
+  
+  #tabletNav ul a:hover {
+    background-color: #8A0000;
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    color: #FFF;
+  }
+
+   #introSmaller {
+    display: block;
+    text-align: center;
+   }
+
+   #introSmaller h3 {
+    position: relative;
+    bottom: 0px;
+  }
+  
+  #introSmaller h4 {
+    position: relative;
+    bottom: 0px;
+  }
+}
+
 @media screen and (max-width: 750px) { 
   #columns { 
    column-gap: 0px;
@@ -153,6 +249,25 @@
 
   #desktopNav {
    display: none;
+  }
+
+  #tabletNav {
+    display: none;
+   }
+
+  #introSmaller {
+    display: block;
+    text-align: center;
+   }
+
+   #introSmaller h3 {
+    position: relative;
+    bottom: -10px;
+  }
+  
+  #introSmaller h4 {
+    position: relative;
+    bottom: -50px;
   }
 
   #logButton {
