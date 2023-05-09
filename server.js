@@ -276,7 +276,34 @@ express()
   })*/
 
 
+// Discussion.ejs
+.get('/Discussion', (req, res) => {
+  res.render('pages/Discussion')
+})
+.post('/MessageBoard', async function (req, res) {
+  res.set({ 'Content-Type': 'application/json' })
 
+  try {
+    const client = await pool.connect()
+
+    const gardenNews = req.body.communication
+
+    if (idea === null || idea === '') {
+      res.status(400).send('Please type in your ideas. Thank You!')
+      res.end()
+    } else {
+      const insertIdeaSql = "INSERT INTO feed (idea) VALUES('" + idea + "');"
+
+      await client.query(insertIdeaSql)
+
+      res.json({ ok: true })
+      client.release()
+    }
+  } catch (error) {
+    console.error('Invalid Entry')
+    res.status(400).json({ ok: false })
+  }
+})
 
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

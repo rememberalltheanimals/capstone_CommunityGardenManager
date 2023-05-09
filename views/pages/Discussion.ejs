@@ -1,9 +1,59 @@
 <%- include('../shared/header.ejs') %>
   <main>
-    <h2>Welcome to Community Garden Manager's Discussion Page</h2>
-    <p>Web page currently under construction.</p>
-    <p>Thank you for your paitence.</p>
-    <img src="images/construction.gif" alt="Garden Plot">
+    <h2>Share the ideas!</h2>
+    <div>
+      
+      <h3>Ask questions, Make suggestions, Get the answers</h3>
 
-      <%- include('../shared/footer.ejs') %>
+      <form>
+        <input type="text" name="memo" id="memo" placeholder="Type here...">
+        
+        <input type="submit" id="sub">
+      </form>
+    </div>
+
+    <%- include('../shared/footer.ejs') %>
   </main>
+
+  <script>
+        
+    const main = document.querySelector('main')
+    
+    const postIt = document.getElementById('memo')
+    
+    const subBtn = document.getElementById('sub')
+        
+    const discuss = async function () {
+
+
+      main.innerHTML = '<h1>Thinking is sitting...</h1>'
+
+
+      const communicate = postIt.value
+
+      const info = {
+        communication: communicate
+      }
+
+        const response = await fetch('/MessageBoard', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(info)
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+        if (result.ok) {
+          main.innerHTML = `<h1>Success!</h1>`
+          return
+        }
+      }
+
+      main.innerHTML = `<h1>Server error</h1>`
+    
+    }
+    subBtn.addEventListener('click', (e) => discuss())
+  </script>
