@@ -160,20 +160,6 @@ express()
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
-  /*
-  .post('/register', (req, res) => {
-    const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
-  
-    pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
-      if (err) {
-        console.error(err);
-        res.send('Error registering member.');
-      } else {
-        console.log(result);
-        res.send('Member registered successfully.');
-      }
-    });
-  });*/
   .post('/register', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
 
@@ -206,11 +192,6 @@ express()
       res.status(400).json({ ok: false })
     }
   })
-  // Would not work on Render, when combined with /searchName and PlantSearch.ejs
-  //
-  //.get('/PlantSearch', (req, res) => {
-  //  res.render('pages/PlantSearch')
-  //})
   .get('/PlantSearch2', (req, res) => {
     res.render('pages/PlantSearch2')
   })
@@ -275,36 +256,6 @@ express()
     const favorites = await queryMemberFavorites()
     res.render('pages/favorites', favorites)
   })
-
-  /* /searchName and PlantSearch.ejs, would not work on Render, not sure what the issue is.
-  // No api key to save, updated to newer Node version, not sure
-  //
-  .post('/searchName', async function (req, res) {
-    const Input2 = req.body.Input2
-    const urlApi2 = `https://openfarm.cc/api/v1/crops/${Input2}`
-
-    const response = await fetch(urlApi2, {
-      method: 'GET',
-      headers: {}
-    })
-
-    const result = await response.json()
-
-    if (result.data && result.data != null && result.data != ''){  /// Appropriate valdiation for search field
-      res.json({ name: result.data.attributes.name, Bname: result.data.attributes.binomial_name, description: result.data.attributes.description, sunReq: result.data.attributes.sun_requirements, days: result.data.attributes.growing_degree_days, method: result.data.attributes.sowing_method, spread: result.data.attributes.spread, row: result.data.attributes.row_spacing, height: result.data.attributes.height, image: result.data.attributes.main_image_path })
-    } else {
-      res.status(400).send('Not found, please try again. Thank You!')
-      res.end()
-    }
-
-  })*/
-
-
-// Discussion.ejs
-/*.get('/Discussion', (req, res) => {
-  res.render('pages/Discussion')
-})*/
-
 .get('/Discussion', async (req, res) => {
   try {
     const client = await pool.connect();
@@ -326,8 +277,6 @@ express()
     });
   }
 })
-
-
 .post('/MessageBoard', async function (req, res) {
   res.set({ 'Content-Type': 'application/json' })
 
@@ -353,5 +302,4 @@ express()
   }
 })
 
-
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+.listen(PORT, () => console.log(`Listening on ${PORT}`));
