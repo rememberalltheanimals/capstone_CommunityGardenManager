@@ -188,7 +188,7 @@ footer {
   width: 300px;
 }
 
-#FavsSuccess, #FavsFail {
+#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail {
   text-align: center;
 }
 

@@ -186,12 +186,12 @@ const subRegister = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = `<h1>Success! Welcome ${username}, your account has been created.</h1>`
+      main.innerHTML = `<h1 id="signUpSuccess">Success! Welcome ${username}, your account has been created.</h1>`
       return
     }
   }
 
-  main.innerHTML = '<h1>Server error</h1>'
+  main.innerHTML = '<h1 id="signUpFail">Server error</h1>'
 
 
 }
