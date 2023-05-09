@@ -157,9 +157,6 @@ express()
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
   })
-  .get('/Discussion', (req, res) => {
-    res.render('pages/Discussion')
-  })
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
@@ -304,16 +301,16 @@ express()
 
 
 // Discussion.ejs
-.get('/Discussion', (req, res) => {
+/*.get('/Discussion', (req, res) => {
   res.render('pages/Discussion')
-})
+})*/
 
-/*
 .get('/Discussion', async (req, res) => {
   try {
     const client = await pool.connect();
     const postSql = "SELECT * FROM feed2;";
     const posts = await client.query(postSql);
+    console.log(posts);
     const args = {
       "posts": posts ? posts.rows : null
     };
@@ -329,7 +326,7 @@ express()
     });
   }
 })
-*/
+
 
 .post('/MessageBoard', async function (req, res) {
   res.set({ 'Content-Type': 'application/json' })

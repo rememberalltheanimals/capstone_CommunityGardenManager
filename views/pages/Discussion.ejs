@@ -12,6 +12,15 @@
         <input type="submit" value="Post" id="sub">
       </form>
     </div>
+    <div id="board">
+   
+      <% posts.forEach(function(p) { %>
+        <h3>
+          <%= p.idea %>
+        </h3>
+      <% }); %>
+
+    </div>
 
     <%- include('../shared/footer.ejs') %>
   </main>
