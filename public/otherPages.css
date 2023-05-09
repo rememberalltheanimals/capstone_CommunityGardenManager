@@ -177,12 +177,22 @@ footer {
   text-decoration: underline;
 }
 
-#search-form, #search-form2 {
+#search-form, #search-form2, #addFav-form, #addFav-header {
   align-self: flex-start;
   display: grid;
   justify-items: center;
   align-items: center;
 }
+
+#addFav-form input {
+  width: 300px;
+}
+
+#FavsSuccess, #FavsFail {
+  text-align: center;
+}
+
+
 
 .search-form-field, .search-form-field2 {
   color: #3a3a3a;

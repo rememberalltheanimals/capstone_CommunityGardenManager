@@ -61,12 +61,12 @@ const submit = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = `<h1>Success! The plant '${plant}' has been added to your favorites!<br>Thank You, ${user}!</h1>`
+      main.innerHTML = `<h1 id="FavsSuccess">Success! The plant '${plant}' has been added to your favorites!<br>Thank You, ${user}!</h1>`
       return
     }
   }
 
-  main.innerHTML = '<h1>Server error</h1>'
+  main.innerHTML = '<h1 id="FavsFail">Server error: Please be sure to enter valid data in all fields. Thank you!</h1>'
 
  
 }
