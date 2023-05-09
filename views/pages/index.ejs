@@ -4,43 +4,68 @@
     <title>Community Garden Manager</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/homePage.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
   <div class="wrapper">
-    <div id="intro">
-      <h1>Hello, Welcome to [Community Garden of Client]!</h1>
+    <div id="introDesktop">
+      <h1>Hello, Welcome to Community Garden Manager!</h1>
       <div id="logButton">
         <a href="/loginAndSignUp" class="button">Login</a>
-      </div>
+        </div>
       
       <h3>This site is managed by [Client].</h3>
-      <h4>Become a member and be able to check out the garden or click an image to explore!</h4>
+      <h4>Become a garden member, check out the garden, or click an image to explore!</h4>
     </div>
+    <div id="introSmaller">
+        <h1>Hello, Welcome to [Community Garden of Client]!</h1>
+        <div id="logButton">
+          <a href="/loginAndSignUp" class="button">Login</a>
+          </div>
+        
+        <h3>This site is managed by [Client].</h3>
+        <h4>Become a member and be able to check out the garden or click an image to explore!</h4>
+      </div>
     <nav id="desktopNav">
       <ul>
-        <li><a href='/' id="homeTab">Home</a></li>
-        <li><a href='/pageA'>pageA</a></li>
-        <li><a href='/pageB'>pageB</a></li>
-        <li><a href='/pageC'>pageC</a></li>
-        <li><a href='/pageD'>pageD</a></li>
+        <li><a href='/' id="homeTab">Member's Home</a></li>
+        <li><a href='/AddFavs'>Add Favorites</a></li>
+        <li><a href='/favorites'>Member's Favorites</a></li>
         <li><a href='/Design'>Garden Designer</a></li>
         <li><a href='/Gallery'>Image Gallery</a></li>
-        <li><a href='/ZoneMap'>Zone Map</a></li>
+        <li><a href='/Discussion'>Gardener Chat</a></li>
+        <li><a href='/ZoneMap'>ZipCode Lookup</a></li>
         <li><a href='/ZoneSearch'>Zone Search</a></li>
         <li><a href='/PlantSearch2'>Plant Search</a></li>
       </ul>
     </nav>
+    <nav id="tabletNav">
+        <ul>
+          <li><a href='/' id="homeTab">Member's Home</a></li>
+          <li><a href='/AddFavs'>Add Favorites</a></li>
+          <li><a href='/favorites'>Member's Favorites</a></li>
+          <li><a href='/Design'>Garden Designer</a></li>
+          <li><a href='/Gallery'>Image Gallery</a></li>
+          <li><a href='/Discussion'>Gardener Chat</a></li>
+          <li><a href='/ZoneMap'>ZipCode Lookup</a></li>
+          <li><a href='/ZoneSearch'>Zone Search</a></li>
+          <li><a href='/PlantSearch2'>Plant Search</a></li>
+          <li><a id="loginButton" href='/loginAndSignUp'>Login</a></li>
+        </ul>
+      </nav>
     <div class="dropdown">
         <button>Quick Links</button>
             <div class="dropdown-options">
-                <a href='/' id="homeTab">Home</a>
-                <a href='/pageA'>pageA</a>
-                <a href='/pageB'>pageB</a>
-                <a href='/pageC'>pageC</a>
-                <a href='/pageD'>pageD</a>
+                <a href='/' id="homeTab">Member's Home</a>
+                <a href='/AddFavs'>Add Favorites</a>
+                <a href='/favorites'>Member's Favorites</a>
                 <a href='/Design'>Garden Designer</a>
                 <a href='/Gallery'>Image Gallery</a>
-                <a href='/ZoneMap'>Zone Map</a>
+                <a href='/Discussion'>Gardener</a>
+                <a href='/ZoneMap'>ZipCode Lookup</a>
                 <a href='/ZoneSearch'>Zone Search</a>
                 <a href='/PlantSearch2'>Plant Search</a>
                 <a href='/loginAndSignUp'>Login</a>
@@ -49,31 +74,24 @@
       
     <div id="columns">
 
-        <a href="/pageA">
+        <a href="/">
             <figure>
                 <img src="images/IMG_9829.JPG" alt="Garden Plot">
-                <figcaption>Garden Plots - Page A</figcaption>
+                <figcaption><strong>Member's Home</strong> - This is your home page. Browse and enjoy the images. Navigate the website!</figcaption>
             </figure>
         </a>
 
-        <a href="/pageB">
+        <a href="/AddFavs">
             <figure>
-                <img src="images/IMG_9835.JPG" alt="Garden Tools">
-                <figcaption>Garden Tools - Page B</figcaption>
-            </figure>
-        </a>
-
-        <a href="/pageC">
-            <figure>
-                <img src="images/IMG_9837.JPG" alt="Garden Plants">
-                <figcaption>Garden Plants - Page C</figcaption>
+                <img src="images/IMG_9830.JPG" alt="Add Favorites">
+                <figcaption><strong>Add Your Favorites</strong> - Add and save your favorite plants to your profile!</figcaption>
            </figure>
         </a>
 
-        <a href="/pageD">
+        <a href="/favorites">
             <figure>
-                <img src="images/IMG_9830.JPG" alt="Weather Zone">
-                <figcaption>Weather Zones - Page D</figcaption>
+                <img src="images/IMG_9837.JPG" alt="Garden Plants">
+                <figcaption><strong>View Member's Favorites</strong> - View your and other member's favorite plants!</figcaption>
            </figure>
         </a>
 
@@ -91,10 +109,18 @@
             </figure>
         </a>
 
+        <a href="/Discussion">
+            <figure>
+                <img src="images/IMG_9835.JPG" alt="Garden Tools">
+                <figcaption><strong>Gardener Chat</strong> - Participate in our chat! Ask questions. Make suggestions. Get the answers. </figcaption>
+            </figure>
+        </a>
+
+
         <a href="/ZoneMap">
             <figure>
                 <img src="images/IMG_9832.JPG" alt="Bee sitting on flower">
-                <figcaption><strong>Hardiness Zone Finder</strong> - Find out which zone you live in based on your zipcode!</figcaption>
+                <figcaption><strong>ZipCode Lookup</strong> - Find out which zone you live in based on your zipcode!</figcaption>
             </figure>
         </a>
 

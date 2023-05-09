@@ -95,6 +95,7 @@ footer {
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
+  width: 85%;
  /* width: 1000px; Causing things not to shrink */
   text-align: center;
   color: #000;
@@ -177,11 +178,31 @@ footer {
   text-decoration: underline;
 }
 
-#search-form, #search-form2 {
+#search-form, #search-form2, #addFav-form, #addFav-header, #searchFavs-form, #searchFavs-header {
   align-self: flex-start;
   display: grid;
   justify-items: center;
   align-items: center;
+}
+
+#addFav-form input {
+  width: 300px;
+}
+
+#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail, #discussionSuccess, #discussionFail, #discussion-form, #memFavHeader, .comingSoon, #galleryHeader {
+  text-align: center;
+}
+
+#searchFavs-form-submit {
+  margin-bottom: 10px;
+}
+
+table, th, td {
+  border:1px solid black;
+  border-color: black;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .search-form-field, .search-form-field2 {
@@ -191,7 +212,6 @@ footer {
 
 .search-form-field, .search-form-field2 {
   border: none;
-  border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
   border-radius: 3px;
   outline: none;
@@ -221,6 +241,7 @@ footer {
   text-align: center;
   width: 50%;
 }
+
 #displaySearchResults, #displaySearchResults2 {
 
   border-color: #000;
@@ -234,7 +255,6 @@ footer {
   text-align: center;
   color: #000;
   border-top: 1px solid;
-  border-bottom: 1px solid;
 }
 
 #resultNameImg{
@@ -266,6 +286,7 @@ footer {
 
 .gallery {
   margin: 10px 50px;
+  margin-left: -250px;
 }
 
 .gallery img {
@@ -278,4 +299,22 @@ footer {
 .gallery img:hover{
   filter: grayscale(0);
   transform: scale(1.1);
+}
+
+#loginButton {
+  background-color: rgb(79, 48, 48);
+  border: none;
+  color: #4CAF50;
+  padding: 17px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
+
+}
+
+#loginButton:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  color: #FFF;
 }
