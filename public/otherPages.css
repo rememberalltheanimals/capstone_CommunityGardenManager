@@ -95,6 +95,7 @@ footer {
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
+  width: 85%;
  /* width: 1000px; Causing things not to shrink */
   text-align: center;
   color: #000;
@@ -211,7 +212,6 @@ table, th, td {
 
 .search-form-field, .search-form-field2 {
   border: none;
-  border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
   border-radius: 3px;
   outline: none;
@@ -255,7 +255,6 @@ table, th, td {
   text-align: center;
   color: #000;
   border-top: 1px solid;
-  border-bottom: 1px solid;
 }
 
 #resultNameImg{
