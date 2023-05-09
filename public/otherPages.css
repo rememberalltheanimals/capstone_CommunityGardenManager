@@ -289,3 +289,22 @@ footer {
   filter: grayscale(0);
   transform: scale(1.1);
 }
+
+#loginButton {
+  background-color: rgb(79, 48, 48);
+  border: none;
+  color: #4CAF50;
+  padding: 17px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+
+  border-radius: 5px;
+
+}
+
+#loginButton:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  color: #FFF;
+}
