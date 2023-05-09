@@ -188,7 +188,7 @@ footer {
   width: 300px;
 }
 
-#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail, #discussionSuccess, #discussionFail, #discussion-form, #memFavHeader, .comingSoon {
+#FavsSuccess, #FavsFail, #signUpSuccess, #signUpFail, #discussionSuccess, #discussionFail, #discussion-form, #memFavHeader, .comingSoon, #galleryHeader {
   text-align: center;
 }
 
@@ -287,6 +287,7 @@ table, th, td {
 
 .gallery {
   margin: 10px 50px;
+  margin-left: -250px;
 }
 
 .gallery img {
