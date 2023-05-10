@@ -44,24 +44,24 @@ img {
   left: 30%;
 }
 
-nav {
+#desktopNav {
   margin: 10px auto;
   width: 1090px;
   
 }
 
-nav ul li a {
+#desktopNav ul li a {
   margin: 10px 2px;
   font-size: 22px;
   width: 85px;
   padding: 5px;
 }
 
-ul {
+#desktopNav ul {
   list-style-type: none;
   display: flex;
 }
-nav ul a {
+#desktopNav ul a {
   background-color: rgba(2, 75, 57, 0.651);
   border-color: #000;
   border-width: 1px;
@@ -77,7 +77,7 @@ nav ul a {
     
 }
 
-nav ul a:hover {
+#desktopNav ul a:hover {
   background-color: #8A0000;
   border-color: #000;
   border-width: 1px;
@@ -197,6 +197,10 @@ footer {
   margin-bottom: 10px;
 }
 
+table {
+  width: 75%;
+}
+
 table, th, td {
   border:1px solid black;
   border-color: black;
@@ -219,7 +223,7 @@ table, th, td {
 }
 
 #search-form-submit, #search-form-submit2 {
-  width: 15%;
+  width: 100px;
   padding: 7px;
   border: none;
   border-radius: 5px;
@@ -301,7 +305,7 @@ table, th, td {
   transform: scale(1.1);
 }
 
-#loginButton {
+#desktopNav #loginButton {
   background-color: rgb(79, 48, 48);
   border: none;
   color: #4CAF50;
@@ -313,7 +317,7 @@ table, th, td {
 
 }
 
-#loginButton:hover {
+#desktopNav #loginButton:hover {
   background-color: #8A0000;
   border-color: #000;
   color: #FFF;
@@ -337,29 +341,39 @@ blockquote p {
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 1100px) { 
- 
+/* My new code */
+
+.dropdown, #tabletNav, #introSmaller{
+  display: none;
 }
 
-@media screen and (max-width: 960px) { 
-  #desktopNav {
+@media screen and (max-width: 1075px) { 
+
+  #desktopNav, #logButton {
     display: none;
    }
 
    #tabletNav {
     display: block;
-   }
+  }
+
+  #tabletNav ul {
+    text-align: center;
+  }
+  
+  #tabletNav li {
+    display: inline-block;
+    margin: 1%;
+  }
 
   #tabletNav ul li a {
     margin: 10px 2px;
     margin-left: 0px;
     font-size: 22px;
     padding: 5px;
+    width: 100px;
   }
   
-  #tabletNav ul {
-    list-style-type: none;
-  }
   #tabletNav ul a {
     background-color: rgba(2, 75, 57, 0.651);
     border-color: #000;
@@ -382,28 +396,43 @@ blockquote p {
     border-style: solid;
     border-radius: 5px;
     color: #FFF;
-  }
+  } 
 
-  /* all other pages except the design page */
   main {
-    position: relative;
+    width: auto;
   }
 
-  main h1 {
-    font-size: 1.17em;
+  #displaySearchResults, #displaySearchResults2 {
+    width: auto;
   }
 
-  header h1 {
-    font-size: 1.17em;
+  #tabletNav #loginButtonNav {
+    background-color: rgb(79, 48, 48);
+    border: none;
+    color: #4CAF50;
+    padding-top: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 5px;
+  
+  }
+  
+  #tabletNav #loginButtonNav:hover {
+    background-color: #8A0000;
+    border-color: #000;
+    color: #FFF;
   }
 
-  main h2 {
-    font-size: 1em;
-  }
 }
 
 @media screen and (max-width: 750px) { 
- 
+  #columns { 
+   column-gap: 0px;
+   margin-left: 0px;
+ }
+  #columns figure { width: 100%; }
+
   #desktopNav {
    display: none;
   }
@@ -411,6 +440,14 @@ blockquote p {
   #tabletNav {
     display: none;
    }
+
+  #logButton {
+    display: none;
+  }
+
+  #intro h3, h4 {
+    top: 10px;
+  }
   
   .dropdown {
     display: inline-block;
@@ -458,120 +495,13 @@ blockquote p {
     border-radius:5px;
   }
 
-  /* all other pages except the design page */
-  main {
-    position: relative;
+  .zoneDisplay {
+    width: auto;
   }
-
-  /* AddFavs.ejs */
-  header h1 {
-    font-size: 1.17em;
+  
+  .zoneDisplay img {
+   display: none;
   }
-
-  main h2 {
-    font-size: 1em;
-  }
-
-  #addFavForm {
-    position: relative;
-  }
-
-
-  #addFav-header {
-    font-size: .83em;
-  }
-
-  /* Design.ejs */
-  .container {
-    position: relative;
-  }
-
-  /* Discussion.ejs */
-  .comingSoon {
-    font-size: 1.17em;
-  }
-
-  #discussion-form {
-    position: relative;
-  }
-
-  #Success {
-    position: relative;
-  }
-
-  #board {
-    position: relative;
-  }
-
-  /* favorites.ejs */
-  main h2 {
-  font-size: 1em;
-  }
-
-  #searchFavsForm {
-    position: relative;
-  }
-
-  /* Gallery.ejs */
-  #galleryHeader {
-    font-size: 1.17em;
-  }
-
-  .gallery {
-    position: relative;
-  }
-
-  /* loginAndSignUp.ejs */
-  .login {
-    position: relative;
-  }
-
-  .signUp {
-    position: relative;
-  }
-
-  #Success {
-    position: relative;
-  }
-
-  /* plantSearch.ejs and plantSearch2.ejs */
-  #searchForm2 {
-    position: relative;
-  }
-
-  #displaySearchResult2 {
-    position: relative;
-  }
-
-  /* ZoneMap.ejs */
-  #ZoneMap {
-    position: relative;
-  }
-
-  .inputContainer {
-    position: relative;
-  }
-
-  .resultsContainer {
-    position: relative;
-  }
-
-  /* ZoneSearch */
-  #searchForm {
-    position: relative;
-  }
-
-  #search-header {
-    font-size: .83em;
-  }
-
-  #search-form {
-    position: relative;
-  }
-
-  #displaySearchResults {
-    position: relative;
-  }
-
+  
 }
 
