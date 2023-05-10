@@ -383,6 +383,23 @@ blockquote p {
     border-radius: 5px;
     color: #FFF;
   }
+
+  /* all other pages except the design page */
+  main {
+    position: relative;
+  }
+
+  main h1 {
+    font-size: 1.17em;
+  }
+
+  header h1 {
+    font-size: 1.17em;
+  }
+
+  main h2 {
+    font-size: 1em;
+  }
 }
 
 @media screen and (max-width: 750px) { 
@@ -439,6 +456,11 @@ blockquote p {
     color: #0a0a23;
     background-color: #ddd;
     border-radius:5px;
+  }
+
+  /* all other pages except the design page */
+  main {
+    position: relative;
   }
 
   /* AddFavs.ejs */
