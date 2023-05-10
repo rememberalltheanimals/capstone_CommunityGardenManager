@@ -38,11 +38,13 @@ h2{
   font-size: 25px;
 }
 
+/*
 img {
   margin:10px;
   position: relative;
   left: 30%;
 }
+*/
 
 #desktopNav {
   margin: 10px auto;
@@ -289,8 +291,9 @@ table, th, td {
 }
 
 .gallery {
-  margin: 10px 50px;
-  margin-left: -250px;
+  margin: auto;
+  margin-left: 15%;
+
 }
 
 .gallery img {
@@ -298,6 +301,7 @@ table, th, td {
   padding: 15px;
   filter: grayscale(100%);
   transition: 1s;
+  margin: 20px;
 }
 
 .gallery img:hover{
