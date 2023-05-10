@@ -16,9 +16,11 @@
     <div id="board" class="comingSoon">
       <h2>Message Board</h2>
       <% posts.forEach(function(p) { %>
-        <h3>
-          <%= p.idea %>
-        </h3>
+        <blockquote>
+          <p>
+            "<%= p.idea %>"
+          </p>
+        </blockquote>
       <% }); %>
     </div>
 

@@ -318,3 +318,22 @@ table, th, td {
   border-color: #000;
   color: #FFF;
 }
+
+blockquote {
+  border: 1px solid #ccc;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+blockquote p {
+  font-size: 22px;
+}
+
+#board {
+  border: 1px solid #ccc;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
