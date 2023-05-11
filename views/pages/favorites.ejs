@@ -28,7 +28,7 @@
       main.innerHTML = '<h1>Please wait</h1>'
         
       if(username.value === null || username.value === '' || password.value === null || password.value === ''){
-          main.innerHTML = `<h3>Please be sure to enter username and password to view Audience Favorites</h3>`
+          main.innerHTML = `<h3>Please be sure to enter username and password to view nember's favorites</h3>`
       } else {
         main.innerHTML = `<h2 id="memFavHeader">Member's Favorites</h2><h3 class="comingSoon">This page will soon only let you see the favorites of the user you search for!</h3><div><table><tr><th>Username</th><th>Plant Name</th><th>Description</th><th>Growing Notes</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.plant_name %></td><td><%= favorite.plant_description %></td><td><%= favorite.growth_notes %></td></tr><%_ } _%></table></div>`     
       }
