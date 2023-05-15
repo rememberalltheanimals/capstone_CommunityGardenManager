@@ -1,17 +1,28 @@
 <%- include('../shared/header.ejs') %>
   <main>
     <h2>Welcome to Community Garden Manager's About Us</h2>
-    <p>We built this site to bring communities together. We wanted those people that had the spaces for their communities to build gardens, or food plots that would allow for people to come and grow whatever they wanted or needed. It is importnant, we feel, that with everything going on that learning how to grow one's own food is important. We hope that you believe as well.</p>
+    <p>We built this site with the purpose of  bringing communities together. It is our hope that those communities that have the space available, will choose to use this space for their communities to build gardens or food plots. This would allow people to come together and grow whatever they wanted or needed. It is important, now more than ever, with everything going on, to be self sustaining and to learn how to grow one's own food. We hope that you believe in this as well and will all become apart of our community.</p>
     <p>If you have any questions, please feel free to send us a message below.</p>
     
 
     <div class="contact">
+      <h2 class="contactHeader">Contact via Database</h2>
       <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
       <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
       <form>
         <label for="textbox">Enter your questions/comments:</label><br>
         <textarea id="text" name="textbox" rows="4" cols="40"></textarea><br>
         <input type="submit" value="Submit" id="submitContact">
+      </form>
+    </div>
+
+    <div class ="contact">
+      <h2 class="contactHeader">Contact via External Email</h2>
+      <form action="mailto:CommunityGardenManagerCGM@gmail.com" method="post" enctype="text/plain">
+         Member Name:<br><input type="text" name="name"> <br>
+         Member Email:<br><input type="text" name="email"><br>
+         Member Questions/Concerns:<br><input type="text" name="subject"><br>
+         <input type="submit" value="Send">
       </form>
     </div>
 
@@ -56,6 +67,7 @@ const subContact = async function () {
     const result = await response.json()
     if (result.ok) {
       main.innerHTML = `<h1 class="comingSoon">Success! Welcome ${name}, we have received your submission.</h1>`
+
       return
     }
   }

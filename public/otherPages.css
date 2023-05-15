@@ -349,6 +349,10 @@ blockquote p {
   margin-left: 30%;
 }
 
+.contactHeader {
+  margin-left: -30%
+}
+
 /* My new code */
 
 .dropdown, #tabletNav, #introSmaller{
