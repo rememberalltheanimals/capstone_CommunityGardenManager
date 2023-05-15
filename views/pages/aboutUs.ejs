@@ -10,7 +10,7 @@
       <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
       <form>
         <label for="textbox">Enter your questions/comments:</label><br>
-        <textarea id="text" name="textbox" rows="4" cols="50"></textarea><br>
+        <textarea id="text" name="textbox" rows="4" cols="40"></textarea><br>
         <input type="submit" value="Submit" id="submitContact">
       </form>
     </div>
@@ -55,7 +55,7 @@ const subContact = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = `<h1>Success! Welcome ${name}, we have received your submission.</h1>`
+      main.innerHTML = `<h1 class="comingSoon">Success! Welcome ${name}, we have received your submission.</h1>`
       return
     }
   }

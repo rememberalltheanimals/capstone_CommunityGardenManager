@@ -72,9 +72,9 @@ CREATE TABLE plantFavorites2(
 
 CREATE TABLE contact (
   id SERIAL PRIMARY KEY,
-  `name` TEXT NOT NULL,
-  email TEXT NOT NULL,
-  `text` TEXT NOT NULL
+  memberName TEXT NOT NULL,
+  memberEmail TEXT NOT NULL,
+  memberText TEXT NOT NULL
 );
 
 INSERT INTO gardenButtons (name) VALUES ('Eunhae');

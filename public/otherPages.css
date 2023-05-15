@@ -345,6 +345,10 @@ blockquote p {
   margin-bottom: 10px;
 }
 
+.contact {
+  margin-left: 30%;
+}
+
 /* My new code */
 
 .dropdown, #tabletNav, #introSmaller{
@@ -508,9 +512,3 @@ blockquote p {
   }
   
 }
-
-
-  .contact {
-  position: relative; 
-  left: 350px;
-  }

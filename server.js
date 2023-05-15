@@ -151,7 +151,7 @@ express()
         res.status(400).send('Please type in your quieries. Thank You!')
         res.end()
       } else {
-        const insertTextSql = "INSERT INTO contact (name, email, text) VALUES('" + name + "', '" + email + "', '" + text + "');"
+        const insertTextSql = "INSERT INTO contact (memberName, memberEmail, memberText) VALUES('" + name + "', '" + email + "', '" + text + "');"
 
         await client.query(insertTextSql)
 
