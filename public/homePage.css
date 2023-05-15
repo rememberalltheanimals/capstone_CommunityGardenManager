@@ -67,10 +67,16 @@
    transition: .4s color;
  }
  
- /* Do we want to get rid of the blur effect */
+ /* Do we want to get rid of the blur effect 
  div#columns:hover figure:not(:hover) {
    opacity: 0.4;
  }
+ */
+
+ /* Could do color on hover instead */
+ div#columns:hover figure:hover {
+  background-color: rgba(2, 75, 57, 0.651);
+}
  
  .button {
   background-color: rgb(79, 48, 48);
