@@ -130,23 +130,15 @@ express()
   .get('/', async function (req, res) {
     res.render('pages/index')
   })
-  .get('/pageA', (req, res) => {
-    res.render('pages/pageA')
-  })
-  .get('/pageB', (req, res) => {
-    res.render('pages/pageB')
-  })
   .get('/pageC', (req, res) => {
     res.render('pages/pageB')
   })
   .get('/pageD', (req, res) => {
     res.render('pages/pageD')
   })
+
   .get('/Design', (req, res) => {
     res.render('pages/Design')
-  })
-  .get('/pageF', (req, res) => {
-    res.render('pages/pageF')
   })
   .get('/ZoneMap', (req, res) => {
     res.render('pages/ZoneMap')
@@ -221,9 +213,7 @@ express()
     }
 
   })
-  .get('/AddFavs', (req, res) => {
-    res.render('pages/AddFavs')
-  })
+
   .post('/AddToFav', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
 
@@ -299,6 +289,33 @@ express()
   } catch (error) {
     console.error('Invalid Entry')
     res.status(400).json({ ok: false })
+  }
+})
+
+/*
+.get('/pageG', (req, res) => {
+  res.render('pages/pageG')
+})*/
+
+.get('/PageG', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const searchSql = "SELECT * FROM plantFavorites ORDER BY user_username;";
+    const favorites = await client.query(searchSql);
+    
+    const args = {
+      "favorites": favorites ? favorites.rows : null
+    };
+    res.render("pages/PageG", args);
+  }
+  catch (err) {
+    console.error(err);
+    res.set({
+      "Content-Type": "application/json"
+    });
+    res.json({
+      error: err
+    });
   }
 })
 
