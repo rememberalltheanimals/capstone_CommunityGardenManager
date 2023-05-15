@@ -151,6 +151,7 @@ express()
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
+  //Sign Up Member validation method
   .post('/register', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
 
