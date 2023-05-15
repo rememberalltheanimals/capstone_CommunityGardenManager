@@ -136,7 +136,6 @@ express()
   .get('/pageD', (req, res) => {
     res.render('pages/pageD')
   })
-
   .get('/Design', (req, res) => {
     res.render('pages/Design')
   })
@@ -213,7 +212,73 @@ express()
     }
 
   })
+  .get('/Discussion', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const postSql = "SELECT * FROM feed2;";
+      const posts = await client.query(postSql);
 
+      const args = {
+        "posts": posts ? posts.rows : null
+      };
+      res.render("pages/Discussion", args);
+    }
+    catch (err) {
+      console.error(err);
+      res.set({
+        "Content-Type": "application/json"
+      });
+      res.json({
+        error: err
+      });
+    }
+  })
+  .post('/MessageBoard', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      const client = await pool.connect()
+
+      const idea = req.body.communication
+
+      if (idea === null || idea === '') {
+        res.status(400).send('Please type in your ideas. Thank You!')
+        res.end()
+      } else {
+        const insertIdeaSql = "INSERT INTO feed2 (idea) VALUES('" + idea + "');"
+
+        await client.query(insertIdeaSql)
+
+        res.json({ ok: true })
+        client.release()
+      }
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
+  })
+
+  .get('/favorites', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const searchSql = "SELECT * FROM plantFavorites ORDER BY user_username;";
+      const favorites = await client.query(searchSql);
+      
+      const args = {
+        "favorites": favorites ? favorites.rows : null
+      };
+      res.render("pages/favorites", args);
+    }
+    catch (err) {
+      console.error(err);
+      res.set({
+        "Content-Type": "application/json"
+      });
+      res.json({
+        error: err
+      });
+    }
+  })
   .post('/AddToFav', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
 
@@ -242,81 +307,5 @@ express()
       res.status(400).json({ ok: false })
     }
   })
-  .get('/favorites', async function (req, res) {
-    const favorites = await queryMemberFavorites()
-    res.render('pages/favorites', favorites)
-  })
-.get('/Discussion', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const postSql = "SELECT * FROM feed2;";
-    const posts = await client.query(postSql);
-    //console.log(posts);
-    const args = {
-      "posts": posts ? posts.rows : null
-    };
-    res.render("pages/Discussion", args);
-  }
-  catch (err) {
-    console.error(err);
-    res.set({
-      "Content-Type": "application/json"
-    });
-    res.json({
-      error: err
-    });
-  }
-})
-.post('/MessageBoard', async function (req, res) {
-  res.set({ 'Content-Type': 'application/json' })
-
-  try {
-    const client = await pool.connect()
-
-    const idea = req.body.communication
-
-    if (idea === null || idea === '') {
-      res.status(400).send('Please type in your ideas. Thank You!')
-      res.end()
-    } else {
-      const insertIdeaSql = "INSERT INTO feed2 (idea) VALUES('" + idea + "');"
-
-      await client.query(insertIdeaSql)
-
-      res.json({ ok: true })
-      client.release()
-    }
-  } catch (error) {
-    console.error('Invalid Entry')
-    res.status(400).json({ ok: false })
-  }
-})
-
-/*
-.get('/pageG', (req, res) => {
-  res.render('pages/pageG')
-})*/
-
-.get('/PageG', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const searchSql = "SELECT * FROM plantFavorites ORDER BY user_username;";
-    const favorites = await client.query(searchSql);
-    
-    const args = {
-      "favorites": favorites ? favorites.rows : null
-    };
-    res.render("pages/PageG", args);
-  }
-  catch (err) {
-    console.error(err);
-    res.set({
-      "Content-Type": "application/json"
-    });
-    res.json({
-      error: err
-    });
-  }
-})
 
 .listen(PORT, () => console.log(`Listening on ${PORT}`));
