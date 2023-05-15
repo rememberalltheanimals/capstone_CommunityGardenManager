@@ -7,7 +7,6 @@
 
       <form id="addFav-form">
         <input type="text" name="username" id="username-field" class="addFav-form-field" placeholder="Username">
-        <input type="password" name="password" id="password-field" class="addFav-form-field" placeholder="Password">
         <input type="text" name="plantName" id="plantName-field" class="addFav-form-field" placeholder="Plant Common Name">
         <input type="text" name="plantDescription" id="plantDescription-field" class="addFav-form-field" placeholder="Brief Description or Why it is a Favorite">
         <input type="text" name="growingNotes" id="growingNotes-field" class="addFav-form-field" placeholder="Add notes about growing or any other notes">
@@ -43,7 +42,6 @@
     const main = document.querySelector('main')
     
     const username = document.getElementById('username-field')
-    const password = document.getElementById('password-field')
     const plantName = document.getElementById('plantName-field')
     const plantDescription = document.getElementById('plantDescription-field')
     const growingNotes = document.getElementById('growingNotes-field')
@@ -56,14 +54,12 @@ const submit = async function () {
 
 
   const user = username.value
-  const pass = password.value
   const plant = plantName.value
   const description = plantDescription.value
   const notes = growingNotes.value
 
   const data = {
     username: user,
-    password: pass,
     plantName: plant,
     plantDescription: description,
     growingNotes: notes

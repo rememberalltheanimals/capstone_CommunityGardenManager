@@ -261,7 +261,7 @@ express()
   .get('/favorites', async (req, res) => {
     try {
       const client = await pool.connect();
-      const searchSql = "SELECT * FROM plantFavorites ORDER BY user_username;";
+      const searchSql = "SELECT * FROM plantFavorites2 ORDER BY user_username;";
       const favorites = await client.query(searchSql);
       
       const args = {
@@ -286,16 +286,15 @@ express()
       const client = await pool.connect()
 
       const username = req.body.username
-      const password = req.body.password
       const plantName = req.body.plantName
       const plantDescription = req.body.plantDescription
       const growingNotes = req.body.growingNotes
 
-      if (username === null || username === '' || password === null || password === '' || plantName === null || plantName === '' || plantDescription === null || plantDescription === '' || growingNotes === null || growingNotes === '') {
+      if (username === null || username === '' || plantName === null || plantName === '' || plantDescription === null || plantDescription === '' || growingNotes === null || growingNotes === '') {
         res.status(400).send('Make sure to fill in all information. Thank You!')
         res.end()
       } else {
-        const insertFavsSql = "INSERT INTO plantFavorites (user_username, user_password, plant_name, plant_description, growth_notes) VALUES('" + username + "', '" + password + "', '" + plantName + "', '" + plantDescription + "', '" + growingNotes + "');"
+        const insertFavsSql = "INSERT INTO plantFavorites2 (user_username, plant_name, plant_description, growth_notes) VALUES('" + username + "', '" + plantName + "', '" + plantDescription + "', '" + growingNotes + "');"
 
         await client.query(insertFavsSql)
 

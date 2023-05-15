@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS gardenButtons;
 DROP TABLE IF EXISTS watered;
 DROP TABLE IF EXISTS plantFavorites;
+DROP TABLE IF EXISTS plantFavorites2;
 DROP TABLE IF EXISTS feed;
 DROP TABLE IF EXISTS feed2;
 DROP TABLE IF EXISTS members;
@@ -55,6 +56,14 @@ CREATE TABLE plantFavorites(
   favorite_id SERIAL PRIMARY KEY,
   user_username TEXT NOT NULL,
   user_password TEXT NOT NULL,
+  plant_name TEXT NOT NULL,
+  plant_description TEXT NOT NULL,
+  growth_notes TEXT NOT NULL
+);
+
+CREATE TABLE plantFavorites2(
+  favorite_id SERIAL PRIMARY KEY,
+  user_username TEXT NOT NULL,
   plant_name TEXT NOT NULL,
   plant_description TEXT NOT NULL,
   growth_notes TEXT NOT NULL
