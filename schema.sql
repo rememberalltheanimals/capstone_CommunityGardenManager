@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS feed;
 DROP TABLE IF EXISTS feed2;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS members2;
+DROP TABLE IF EXISTS contact;
 
 CREATE TABLE feed (
   id SERIAL PRIMARY KEY,
@@ -67,6 +68,13 @@ CREATE TABLE plantFavorites2(
   plant_name TEXT NOT NULL,
   plant_description TEXT NOT NULL,
   growth_notes TEXT NOT NULL
+);
+
+CREATE TABLE contact (
+  id SERIAL PRIMARY KEY,
+  `name` TEXT NOT NULL,
+  email TEXT NOT NULL,
+  `text` TEXT NOT NULL
 );
 
 INSERT INTO gardenButtons (name) VALUES ('Eunhae');

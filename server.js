@@ -136,6 +136,33 @@ express()
   .get('/aboutUs', (req, res) => {
     res.render('pages/aboutUs')
   })
+
+  .post('/contact', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      const client = await pool.connect()
+
+      const name = req.body.name
+      const email = req.body.email
+      const text = req.body.text
+
+      if (name === null || name === '' || text === null || text === '' || email === null || email === '') {
+        res.status(400).send('Please type in your quieries. Thank You!')
+        res.end()
+      } else {
+        const insertTextSql = "INSERT INTO contact (name, email, text) VALUES('" + name + "', '" + email + "', '" + text + "');"
+
+        await client.query(insertTextSql)
+
+        res.json({ ok: true })
+        client.release()
+      }
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
+  })
   .get('/Design', (req, res) => {
     res.render('pages/Design')
   })
@@ -258,6 +285,7 @@ express()
       res.status(400).json({ ok: false })
     }
   })
+
 
   .get('/favorites', async (req, res) => {
     try {
