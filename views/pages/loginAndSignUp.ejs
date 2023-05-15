@@ -71,69 +71,12 @@
   </main>
 
   <script>
+    //Hides Login, shows Sign Up
     function createAccount() {
     document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
     document.getElementsByClassName('login')[0].style.visibility = 'hidden';
     document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
   }
-
-  /*// Get references to the input fields
-    const nameInput = document.querySelector('input[placeholder="Name"]');
-    const usernameInput = document.querySelector('input[placeholder="Username"]');
-    const emailInput = document.querySelector('input[placeholder="Email"]');
-    const phoneInput = document.querySelector('input[placeholder="Phone Number"]');
-    const zipInput = document.querySelector('input[placeholder="Zip Code"]');
-    const gardenInput = document.querySelector('select[name="gardens"]');
-    const timeInput = document.querySelector('input[placeholder="Garden Time"]');
-    const passwordInput = document.querySelector('input[type="password"]');
-
-  // Add event listener to the form
-      const form = document.querySelector('form');
-     form.addEventListener('submit', (event) => {
-    
-  // Prevent the default form submission behavior
-    event.preventDefault();
-    
-  // Retrieve the input values and store them in variables
-    const name = nameInput.value;
-    const username = usernameInput.value;
-    const email = emailInput.value;
-    const phone = phoneInput.value;
-    const zip = zipInput.value;
-    const garden = gardenInput.value;
-    const time = timeInput.value;
-    const password = passwordInput.value;
-    
-  // Construct the request body
-      const requestBody = {
-        name: name,
-        username: username,
-        email: email,
-        phone: phone,
-        zip: zip,
-        garden: garden,
-        time: time,
-        password: password
-      };
-    
-    // Make a POST request to the server with the form data
-        fetch('/api/members', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the server's response
-          console.log(data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-  });
-  */
 
 const main = document.querySelector('main')
 

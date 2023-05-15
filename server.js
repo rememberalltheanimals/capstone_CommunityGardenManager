@@ -163,20 +163,7 @@ express()
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
   })
-  /*
-  .post('/register', (req, res) => {
-    const { name, username, email, phoneNumber, zipCode, gardenTime, password, garden } = req.body;
-  
-    pool.query('INSERT INTO members (memberName, userName, email, phoneNumber, zipCode, gardenTime, memberPassword, garden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [name, username, email, phoneNumber, zipCode, gardenTime, password, garden], (err, result) => {
-      if (err) {
-        console.error(err);
-        res.send('Error registering member.');
-      } else {
-        console.log(result);
-        res.send('Member registered successfully.');
-      }
-    });
-  });*/
+  //Sign Up Member validation method
   .post('/register', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
 
