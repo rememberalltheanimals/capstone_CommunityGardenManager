@@ -1,47 +1,95 @@
 <%- include('../shared/header.ejs') %>
   <main>
-    <h2>Welcome to Community Garden Manager's Member's Favorites Page</h2>
-    <div id="searchFavsForm">
+    <h2>Welcome to Community Garden Manager's Add Favorites page</h2>
+    <div id="addFavForm">
       
-        <h3 id="searchFavs-header">View Garden Member's Favorites</h3>
+      <h3 id="addFav-header">Add Plants To Your Favorites</h3>
 
-        <div id="searchFavs-form">
-          <input type="text" name="username" id="username-field" class="searchFavs-form-field" placeholder="Username">
-          <input type="password" name="password" id="password-field" class="searchFavs-form-field" placeholder="Password">
-          <button id="searchFavs-form-submit">View All</button>
-        </div>
+      <form id="addFav-form">
+        <input type="text" name="username" id="username-field" class="addFav-form-field" placeholder="Username">
+        <input type="text" name="plantName" id="plantName-field" class="addFav-form-field" placeholder="Plant Common Name">
+        <input type="text" name="plantDescription" id="plantDescription-field" class="addFav-form-field" placeholder="Brief Description or Why it is a Favorite">
+        <input type="text" name="growingNotes" id="growingNotes-field" class="addFav-form-field" placeholder="Add notes about growing or any other notes">
+        <input type="submit" value="Add" id="addFav-form-submit">
+      </form>
     </div>
+
+      <h2>Member's Favorites</h2>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Plant Name</th>
+          <th>Description</th>
+          <th>Growing Notes</th>
+        </tr>
+      <% favorites.forEach(function(f) { %>
+            <tr>
+              <td><%= f.user_username %></td>
+              <td><%= f.plant_name %></td>
+              <td><%= f.plant_description %></td>
+              <td><%= f.growth_notes %></td>
+            </tr>
+      <% }); %>
+    </table>
+
+
+
     <%- include('../shared/footer.ejs') %>
   </main>
+
   <script>
-
-    
-    const main = document.querySelector('main')
-    const username = document.getElementById('username-field')
-    const password = document.getElementById('password-field')
-
-    const submitButton = document.getElementById('searchFavs-form-submit')
-          
-    const submit = async function () {
-
-
-      main.innerHTML = '<h1>Please wait</h1>'
         
-      if(username.value === null || username.value === '' || password.value === null || password.value === ''){
-          main.innerHTML = `<h3>Please be sure to enter username and password to view Audience Favorites</h3>`
-      } else {
-        main.innerHTML = `<h2 id="memFavHeader">Member's Favorites</h2><h3 class="comingSoon">This page will soon only let you see the favorites of the user you search for!</h3><div><table><tr><th>Username</th><th>Plant Name</th><th>Description</th><th>Growing Notes</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.plant_name %></td><td><%= favorite.plant_description %></td><td><%= favorite.growth_notes %></td></tr><%_ } _%></table></div>`     
-      }
+    const main = document.querySelector('main')
     
-// End of your code ////////////////////////////////////////
+    const username = document.getElementById('username-field')
+    const plantName = document.getElementById('plantName-field')
+    const plantDescription = document.getElementById('plantDescription-field')
+    const growingNotes = document.getElementById('growingNotes-field')
+    const submitButton = document.getElementById('addFav-form-submit')
+        
+const submit = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+
+  const user = username.value
+  const plant = plantName.value
+  const description = plantDescription.value
+  const notes = growingNotes.value
+
+  const data = {
+    username: user,
+    plantName: plant,
+    plantDescription: description,
+    growingNotes: notes
+  }
+
+    const response = await fetch('/AddToFav', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = `<h1 id="FavsSuccess">Success! The plant '${plant}' has been added to your favorites!<br>Thank You, ${user}!</h1>`
+
+      setTimeout(function() {
+            location.reload();
+          }, 1000);
+          
+      return
+    }
+  }
+
+  main.innerHTML = '<h1 id="FavsFail">Server error: Please be sure to enter valid data in all fields. Thank you!</h1>'
+
+ 
 }
 submitButton.addEventListener('click', (e) => submit())
-      
-      
-      
-      
-      
-      
-     
-      
-  </script>
+</script>

@@ -13,10 +13,9 @@
 <body id="body">
   <header>
     <h1>Community Garden Manager</h1>
-    <nav>
+    <nav id="desktopNav">
       <ul>
         <li><a href='/' id="homeTab">Member's Home</a></li>
-        <li><a href='/AddFavs'>Add Favorites</a></li>
         <li><a href='/favorites'>Member's Favorites</a></li>
         <li><a href='/Design'>Garden Designer</a></li>
         <li><a href='/Gallery'>Image Gallery</a></li>
@@ -27,4 +26,31 @@
         <li><a id="loginButton" href='/loginAndSignUp'>Login</a></li>
       </ul>
     </nav>
+    <nav id="tabletNav">
+        <ul>
+          <li><a href='/' id="homeTab">Member's Home</a></li>
+          <li><a href='/favorites'>Member's Favorites</a></li>
+          <li><a href='/Design'>Garden Designer</a></li>
+          <li><a href='/Gallery'>Image Gallery</a></li>
+          <li><a href='/Discussion'>Gardener Chat</a></li>
+          <li><a href='/ZoneMap'>ZipCode Lookup</a></li>
+          <li><a href='/ZoneSearch'>Zone Search</a></li>
+          <li><a href='/PlantSearch2'>Plant Search</a></li>
+          <li><a id="loginButtonNav" href='/loginAndSignUp'>Login</a></li>
+        </ul>
+      </nav>
+    <div class="dropdown">
+        <button>Quick Links</button>
+            <div class="dropdown-options">
+                <a href='/' id="homeTab">Member's Home</a>
+                <a href='/favorites'>Member's Favorites</a>
+                <a href='/Design'>Garden Designer</a>
+                <a href='/Gallery'>Image Gallery</a>
+                <a href='/Discussion'>Gardener</a>
+                <a href='/ZoneMap'>ZipCode Lookup</a>
+                <a href='/ZoneSearch'>Zone Search</a>
+                <a href='/PlantSearch2'>Plant Search</a>
+                <a href='/loginAndSignUp'>Login</a>
+            </div>
+    </div>
   </header>

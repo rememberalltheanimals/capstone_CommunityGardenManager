@@ -12,11 +12,34 @@
         <input type="submit" value="Post" id="sub">
       </form>
     </div>
+    <div id="Success"></div>
+    <div id="board" class="comingSoon">
+      <h2>Message Board</h2>
+      <% posts.forEach(function(p) { %>
+        <blockquote>
+          <p>
+            "<%= p.idea %>"
+          </p>
+        </blockquote>
+      <% }); %>
+    </div>
+
 
     <%- include('../shared/footer.ejs') %>
   </main>
 
   <script>
+
+    const normalizeDate = function (src){
+        var date1 = new Date(src); //Convert src to date
+
+        var date2 = date1.toISOString(); //Convert date to correct format date
+
+        var formattedDate = date2.split('T')[0]; //Gets rid of time stamp
+                
+        return formattedDate //return formatted date
+
+    }
         
     const main = document.querySelector('main')
 
@@ -51,12 +74,18 @@
         const result = await response.json()
         if (result.ok) {
           main.innerHTML = `<h1 id="discussionSuccess">Success! Your message was added to the database!</h1><h3 class="comingSoon">The message board will be coming soon!</h3>`
+
+          setTimeout(function() {
+            location.reload();
+          }, 1000);
+    
           return
         }
       }
 
       main.innerHTML = `<h1 id="discussionFail">Server error</h1>`
-    
+
+      
     }
 
     subBtn.addEventListener('click', (e) => discuss())

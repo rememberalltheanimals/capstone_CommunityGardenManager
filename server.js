@@ -130,12 +130,6 @@ express()
   .get('/', async function (req, res) {
     res.render('pages/index')
   })
-  .get('/pageA', (req, res) => {
-    res.render('pages/pageA')
-  })
-  .get('/pageB', (req, res) => {
-    res.render('pages/pageB')
-  })
   .get('/pageC', (req, res) => {
     res.render('pages/pageB')
   })
@@ -145,9 +139,6 @@ express()
   .get('/Design', (req, res) => {
     res.render('pages/Design')
   })
-  .get('/pageF', (req, res) => {
-    res.render('pages/pageF')
-  })
   .get('/ZoneMap', (req, res) => {
     res.render('pages/ZoneMap')
   })
@@ -156,9 +147,6 @@ express()
   })
   .get('/Gallery', (req, res) => {
     res.render('pages/Gallery')
-  })
-  .get('/Discussion', (req, res) => {
-    res.render('pages/Discussion')
   })
   .get('/loginAndSignUp', (req, res) => {
     res.render('pages/loginAndSignUp')
@@ -196,11 +184,6 @@ express()
       res.status(400).json({ ok: false })
     }
   })
-  // Would not work on Render, when combined with /searchName and PlantSearch.ejs
-  //
-  //.get('/PlantSearch', (req, res) => {
-  //  res.render('pages/PlantSearch')
-  //})
   .get('/PlantSearch2', (req, res) => {
     res.render('pages/PlantSearch2')
   })
@@ -230,8 +213,72 @@ express()
     }
 
   })
-  .get('/AddFavs', (req, res) => {
-    res.render('pages/AddFavs')
+  .get('/Discussion', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const postSql = "SELECT * FROM feed2;";
+      const posts = await client.query(postSql);
+
+      const args = {
+        "posts": posts ? posts.rows : null
+      };
+      res.render("pages/Discussion", args);
+    }
+    catch (err) {
+      console.error(err);
+      res.set({
+        "Content-Type": "application/json"
+      });
+      res.json({
+        error: err
+      });
+    }
+  })
+  .post('/MessageBoard', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      const client = await pool.connect()
+
+      const idea = req.body.communication
+
+      if (idea === null || idea === '') {
+        res.status(400).send('Please type in your ideas. Thank You!')
+        res.end()
+      } else {
+        const insertIdeaSql = "INSERT INTO feed2 (idea) VALUES('" + idea + "');"
+
+        await client.query(insertIdeaSql)
+
+        res.json({ ok: true })
+        client.release()
+      }
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
+  })
+
+  .get('/favorites', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const searchSql = "SELECT * FROM plantFavorites2 ORDER BY user_username;";
+      const favorites = await client.query(searchSql);
+      
+      const args = {
+        "favorites": favorites ? favorites.rows : null
+      };
+      res.render("pages/favorites", args);
+    }
+    catch (err) {
+      console.error(err);
+      res.set({
+        "Content-Type": "application/json"
+      });
+      res.json({
+        error: err
+      });
+    }
   })
   .post('/AddToFav', async function (req, res) {
     res.set({ 'Content-Type': 'application/json' })
@@ -240,16 +287,15 @@ express()
       const client = await pool.connect()
 
       const username = req.body.username
-      const password = req.body.password
       const plantName = req.body.plantName
       const plantDescription = req.body.plantDescription
       const growingNotes = req.body.growingNotes
 
-      if (username === null || username === '' || password === null || password === '' || plantName === null || plantName === '' || plantDescription === null || plantDescription === '' || growingNotes === null || growingNotes === '') {
+      if (username === null || username === '' || plantName === null || plantName === '' || plantDescription === null || plantDescription === '' || growingNotes === null || growingNotes === '') {
         res.status(400).send('Make sure to fill in all information. Thank You!')
         res.end()
       } else {
-        const insertFavsSql = "INSERT INTO plantFavorites (user_username, user_password, plant_name, plant_description, growth_notes) VALUES('" + username + "', '" + password + "', '" + plantName + "', '" + plantDescription + "', '" + growingNotes + "');"
+        const insertFavsSql = "INSERT INTO plantFavorites2 (user_username, plant_name, plant_description, growth_notes) VALUES('" + username + "', '" + plantName + "', '" + plantDescription + "', '" + growingNotes + "');"
 
         await client.query(insertFavsSql)
 
@@ -261,87 +307,5 @@ express()
       res.status(400).json({ ok: false })
     }
   })
-  .get('/favorites', async function (req, res) {
-    const favorites = await queryMemberFavorites()
-    res.render('pages/favorites', favorites)
-  })
 
-  /* /searchName and PlantSearch.ejs, would not work on Render, not sure what the issue is.
-  // No api key to save, updated to newer Node version, not sure
-  //
-  .post('/searchName', async function (req, res) {
-    const Input2 = req.body.Input2
-    const urlApi2 = `https://openfarm.cc/api/v1/crops/${Input2}`
-
-    const response = await fetch(urlApi2, {
-      method: 'GET',
-      headers: {}
-    })
-
-    const result = await response.json()
-
-    if (result.data && result.data != null && result.data != ''){  /// Appropriate valdiation for search field
-      res.json({ name: result.data.attributes.name, Bname: result.data.attributes.binomial_name, description: result.data.attributes.description, sunReq: result.data.attributes.sun_requirements, days: result.data.attributes.growing_degree_days, method: result.data.attributes.sowing_method, spread: result.data.attributes.spread, row: result.data.attributes.row_spacing, height: result.data.attributes.height, image: result.data.attributes.main_image_path })
-    } else {
-      res.status(400).send('Not found, please try again. Thank You!')
-      res.end()
-    }
-
-  })*/
-
-
-// Discussion.ejs
-.get('/Discussion', (req, res) => {
-  res.render('pages/Discussion')
-})
-
-/*
-.get('/Discussion', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const postSql = "SELECT * FROM feed2;";
-    const posts = await client.query(postSql);
-    const args = {
-      "posts": posts ? posts.rows : null
-    };
-    res.render("pages/Discussion", args);
-  }
-  catch (err) {
-    console.error(err);
-    res.set({
-      "Content-Type": "application/json"
-    });
-    res.json({
-      error: err
-    });
-  }
-})
-*/
-
-.post('/MessageBoard', async function (req, res) {
-  res.set({ 'Content-Type': 'application/json' })
-
-  try {
-    const client = await pool.connect()
-
-    const idea = req.body.communication
-
-    if (idea === null || idea === '') {
-      res.status(400).send('Please type in your ideas. Thank You!')
-      res.end()
-    } else {
-      const insertIdeaSql = "INSERT INTO feed2 (idea) VALUES('" + idea + "');"
-
-      await client.query(insertIdeaSql)
-
-      res.json({ ok: true })
-      client.release()
-    }
-  } catch (error) {
-    console.error('Invalid Entry')
-    res.status(400).json({ ok: false })
-  }
-})
-
-
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+.listen(PORT, () => console.log(`Listening on ${PORT}`));

@@ -15,10 +15,10 @@
   <main>
     <header>
       <h1>Community Garden Manager</h1>
+
       <nav id="desktopNav">
         <ul>
           <li><a href='/' id="homeTab">Member's Home</a></li>
-          <li><a href='/AddFavs'>Add Favorites</a></li>
           <li><a href='/favorites'>Member's Favorites</a></li>
           <li><a href='/Design'>Garden Designer</a></li>
           <li><a href='/Gallery'>Image Gallery</a></li>
@@ -29,10 +29,38 @@
           <li><a id="loginButton" href='/loginAndSignUp'>Login</a></li>
         </ul>
       </nav>
+      <nav id="tabletNav">
+          <ul>
+            <li><a href='/' id="homeTab">Member's Home</a></li>
+            <li><a href='/favorites'>Member's Favorites</a></li>
+            <li><a href='/Design'>Garden Designer</a></li>
+            <li><a href='/Gallery'>Image Gallery</a></li>
+            <li><a href='/Discussion'>Gardener Chat</a></li>
+            <li><a href='/ZoneMap'>ZipCode Lookup</a></li>
+            <li><a href='/ZoneSearch'>Zone Search</a></li>
+            <li><a href='/PlantSearch2'>Plant Search</a></li>
+            <li><a id="loginButtonNav" href='/loginAndSignUp'>Login</a></li>
+          </ul>
+        </nav>
+      <div class="dropdown">
+          <button>Quick Links</button>
+              <div class="dropdown-options">
+                  <a href='/' id="homeTab">Member's Home</a>
+                  <a href='/favorites'>Member's Favorites</a>
+                  <a href='/Design'>Garden Designer</a>
+                  <a href='/Gallery'>Image Gallery</a>
+                  <a href='/Discussion'>Gardener</a>
+                  <a href='/ZoneMap'>ZipCode Lookup</a>
+                  <a href='/ZoneSearch'>Zone Search</a>
+                  <a href='/PlantSearch2'>Plant Search</a>
+                  <a href='/loginAndSignUp'>Login</a>
+              </div>
+      </div>
     </header>
 
     <div class="container">
       <section class="tools-board">
+        <p><em>** Refresh page after resizing for best performance **</em></p>
         <div class="row">
           <label class="title">Shapes</label>
           <ul class="options">
@@ -48,10 +76,6 @@
               <img src="icons/triangle.svg" alt="">
               <span>Triangle</span>
             </li>
-            <li class="option">
-              <input type="checkbox" id="fill-color">
-              <label for="fill-color">Fill color</label>
-            </li>
           </ul>
         </div>
         <div class="row">
@@ -64,6 +88,10 @@
             <li class="option tool" id="eraser">
               <img src="icons/eraser.svg" alt="">
               <span>Eraser</span>
+            </li>
+            <li class="option">
+              <input type="checkbox" id="fill-color">
+              <label for="fill-color">Fill color</label>
             </li>
             <li class="option">
               <input type="range" id="size-slider" min="1" max="30" value="5">

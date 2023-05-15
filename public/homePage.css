@@ -184,22 +184,25 @@
 
    #tabletNav {
     display: block;
-   }
+  }
 
-
+  #tabletNav ul {
+    text-align: center;
+  }
   
+  #tabletNav li {
+    display: inline-block;
+    margin: 1%;
+  }
+
   #tabletNav ul li a {
     margin: 10px 2px;
     margin-left: 0px;
     font-size: 22px;
     padding: 5px;
+    width: 100px;
   }
   
-  #tabletNav ul {
-    list-style-type: none;
-
-    
-  }
   #tabletNav ul a {
     background-color: rgba(2, 75, 57, 0.651);
     border-color: #000;
@@ -221,6 +224,24 @@
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
+    color: #FFF;
+  } 
+
+  #tabletNav #loginButtonNav {
+    background-color: rgb(79, 48, 48);
+    border: none;
+    color: #4CAF50;
+    padding-top: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 5px;
+  
+  }
+  
+  #tabletNav #loginButtonNav:hover {
+    background-color: #8A0000;
+    border-color: #000;
     color: #FFF;
   }
 
