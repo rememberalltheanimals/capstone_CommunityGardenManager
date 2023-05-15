@@ -1,0 +1,69 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Community Garden Manager's About Us</h2>
+    <p>We built this site to bring communities together. We wanted those people that had the spaces for their communities to build gardens, or food plots that would allow for people to come and grow whatever they wanted or needed. It is importnant, we feel, that with everything going on that learning how to grow one's own food is important. We hope that you believe as well.</p>
+    <p>If you have any questions, please feel free to send us a message below.</p>
+    
+
+    <div class="contact">
+      <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
+      <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
+      <form>
+        <label for="textbox">Enter your questions/comments:</label><br>
+        <textarea id="text" name="textbox" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Submit" id="submitContact">
+      </form>
+    </div>
+
+      <%- include('../shared/footer.ejs') %>
+
+
+      <script>
+        const main = document.querySelector('main')
+
+const Users_name = document.getElementById('name')
+const Users_email = document.getElementById('email')
+const Users_text = document.getElementById('text')
+
+const submitButton = document.getElementById('submitContact')
+    
+const subContact = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+  const name = Users_name.value;
+  const email = Users_email.value;
+  const text = Users_text.value
+
+
+  const data = {
+    name: name,
+    email: email,
+    text: text
+  }
+
+    const response = await fetch('/contact', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = `<h1>Success! Welcome ${name}, we have received your submission.</h1>`
+      return
+    }
+  }
+
+  main.innerHTML = '<h1 id="signUpFail">Server error</h1>'
+
+
+}
+submitButton.addEventListener('click', (e) => subContact())
+      </script>
+  </main>

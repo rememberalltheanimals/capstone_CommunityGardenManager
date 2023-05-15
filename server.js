@@ -133,8 +133,8 @@ express()
   .get('/pageC', (req, res) => {
     res.render('pages/pageB')
   })
-  .get('/pageD', (req, res) => {
-    res.render('pages/pageD')
+  .get('/aboutUs', (req, res) => {
+    res.render('pages/aboutUs')
   })
   .get('/Design', (req, res) => {
     res.render('pages/Design')

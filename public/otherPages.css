@@ -509,3 +509,8 @@ blockquote p {
   
 }
 
+
+  .contact {
+  position: relative; 
+  left: 350px;
+  }
