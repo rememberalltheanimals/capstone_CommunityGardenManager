@@ -7,21 +7,20 @@
 
     <div class="contactDatabase">
       <h2 class="contactHeader">Contact via Database</h2>
-      <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
-      <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
+      Member Name:<br><input type="text" class="form_input--input" id="name" autofocus placeholder="Name"><br>
+      Member Email:<br><input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
       <form>
-        <label for="textbox">Enter your questions/comments:</label><br>
-        <textarea id="text" name="textbox" rows="4" cols="40"></textarea><br>
+        Member Questions/Concerns:<br> <textarea id="text" name="textbox" rows="4" cols="30"></textarea><br>
         <input type="submit" value="Submit" id="submitContact">
       </form>
     </div>
 
     <div class ="contactEmail">
       <h2 class="contactHeader">Contact via External Email</h2>
-      <form action="mailto:CommunityGardenManagerCGM@gmail.com" method="post" enctype="text/plain">
+      <form id="contactForm" action="mailto:CommunityGardenManagerCGM@gmail.com" method="post" enctype="text/plain">
          Member Name:<br><input type="text" name="name"> <br>
          Member Email:<br><input type="text" name="email"><br>
-         Member Questions/Concerns:<br><input type="text" name="subject"><br>
+         Member Questions/Concerns:<br> <textarea id="text" name="textbox" rows="4" cols="30"></textarea><br>
          <input type="submit" value="Send">
       </form>
     </div>

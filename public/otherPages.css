@@ -368,19 +368,19 @@ blockquote p {
 }
 
 .contactDatabase {
+  margin-top: -20px;
   margin-left: 10%;
-  width: 40%;
   float: left;
 }
 
 .contactEmail {
-  margin-left: 60%;
+  margin-left: 50%;
   margin-bottom: 5%;
-  width: 45%;
+
 }
 
 .contactHeader {
-  margin-left: -30%
+  margin-left: -20%;
 }
 
 /* My new code */
