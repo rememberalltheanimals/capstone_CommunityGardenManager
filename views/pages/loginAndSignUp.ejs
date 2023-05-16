@@ -49,8 +49,10 @@
           <input type="password" class="form_input--input" id="password" autofocus placeholder="Password">
         </div>
         <div class="form_input">
-          <input type="password" class="form_input--input" autofocus placeholder="Confirm Password">
+          <input type="password" class="form_input--input" id="confirmPassword" autofocus placeholder="Confirm Password" oninput="confirmPassword()">
         </div>
+        <div id="result"></div>
+        <br>
         <div class="form_garden">
           <label for="gardens">Choose a garden:</label>
 
@@ -61,6 +63,7 @@
                <option value="primeEarth">Prime Earth Gardens</option>
             </select>
         </div>
+        <br>
         <input type="submit" value="Create" id="submitRegister">
       </form>
       <div id="Success">
@@ -87,9 +90,26 @@ const Users_phoneNumber = document.getElementById('phoneNumber')
 const Users_zipCode = document.getElementById('zipCode')
 const Users_gardentTime = document.getElementById('gardenTime')
 const Users_password = document.getElementById('password')
+const Users_confirmPassword = document.getElementById('confirmPassword')
 const Users_garden = document.getElementById('gardens')
 
 const submitButton = document.getElementById('submitRegister')
+
+function confirmPassword() {
+  var password1 = Users_password.value;
+  var password2 = Users_confirmPassword.value;
+  var result = document.getElementById("result");
+
+  if (password1 === password2) {
+    result.textContent = "The passwords match!";
+    result.style.color = "green";
+  } else {
+    result.textContent = "The passwords do not match.";
+    result.style.color = "red";
+  }
+}
+// Binding the confirmPassword function to the oniput event
+Users_confirmPassword.oninput = confirmPassword;
     
 const subRegister = async function () {
 
