@@ -6,6 +6,7 @@
  
 body {
   background: rgba(173, 236, 207, 0.8);
+  padding-bottom: 100px;
 }
 
 header h1 {
@@ -126,20 +127,26 @@ footer {
 .zoneDisplay {
   display: flex;
   flex-direction: column;
-  align-items: center;
   border: solid;
   width: 35em;
   margin: auto;
   margin-bottom: 10px;
+  text-align:left;
+
 }
 
-.zoneDisplay img {
-  position: relative;
-  left: 0px;
+.zoneDisplay h3 {
+  margin: 10px;
+  margin-left:31%;
 }
 
 .zoneDisplay span {
   margin: 10px;
+  margin-left:35%;
+}
+
+.zoneDisplay img {
+  margin: auto;
 }
 
 .login {
@@ -263,6 +270,21 @@ table, th, td {
   border-top: 1px solid;
 }
 
+#plantResultsDiv {
+  text-align: left;
+  margin-left: 35%;
+  width: 50%;
+}
+
+#zoneSearchResults{
+  text-align: left;
+  margin-left: 40%;
+}
+
+#zoneSearchResultsHeader {
+  margin-left: -10% ;
+}
+
 #resultNameImg{
   position: relative;
   left: 5px;
@@ -345,8 +367,20 @@ blockquote p {
   margin-bottom: 10px;
 }
 
-.contact {
-  margin-left: 30%;
+.contactDatabase {
+  margin-top: -20px;
+  margin-left: 10%;
+  float: left;
+}
+
+.contactEmail {
+  margin-left: 50%;
+  margin-bottom: 5%;
+
+}
+
+.contactHeader {
+  margin-left: -20%;
 }
 
 /* My new code */
@@ -511,4 +545,31 @@ blockquote p {
    display: none;
   }
   
+}
+
+@media screen and (max-width: 655px) { 
+  .contactDatabase {
+    margin: auto;
+    width: 40%;
+    float:none;
+  }
+  
+  .contactEmail {
+    margin: auto;
+    margin-bottom: 5%;
+    width: 45%;
+  }
+  
+  .contactHeader {
+    margin-left: -30%
+  }
+
+  #zoneSearchResults{
+    text-align: left;
+    margin-left: 25%;
+  }
+  
+  #zoneSearchResultsHeader {
+    margin-left: -10% ;
+  }
 }
