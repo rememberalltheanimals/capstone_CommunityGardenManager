@@ -83,7 +83,8 @@ trees that grow in that desired zone. This will be updated as new APIs are relea
 
 Another issue we faced resulted due to simply running out of time, at the moment our create account and login page is rather limited. A user is able to create an account which is saved to the database,
 unfortunately, currenlty, the user account does not unlock any unique features or have much functionality. A user can use this username to add to the favorites, but adding is not limited to only those
-who have an account created. Future releases will restrict certain activities to those who have an account and are logged in.
+who have an account created. Future releases will restrict certain activities to those who have an account and are logged in. Due to it's limited functionality, for now we have decided to eliminate the login
+page, instead having a Create account page that saves the users created account information. The login will reappear when there is useful functionality for it.
 
 - Other future feature ideas:
   - As a user, I should be able to reserve an individual plot in the garden
