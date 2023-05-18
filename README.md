@@ -24,7 +24,25 @@ Along with the functionality discussed above, Community Garden Manager will also
 ## How to View and Use Website
 Our website and it's database are being publicly hosted on Render.com. Therefore, if you are interested in accessing our website, feel free to follow this link to [Community Garden Manager](https://community-garden-manager-hs4r.onrender.com/) or search by the URL https://community-garden-manager-hs4r.onrender.com/
 
-## Installation
+## Installation (How to contribute)
+To contribute, either email us directly at CommunityGardenManagerCGM@gmail.com, or submit a pull request by following these steps:
+- Install software used in Tech Stack
+  - Software includes:
+   - Node.js
+   - PostgreSQL
+   - Express
+   - EJS
+- Fork this repo (button on the top right)
+- Clone your forked repo git clone
+- Use Node manager to install project dependencies (npm install)
+- If on windows (add .env file that includes Database string and any API keys)
+- Add schema to PostgreSQL
+- Make your changes
+- Run and check your changes on your browser at your localhost address. (localhost:5163)
+- Commit your changes, and push it to your forked repo
+- Click "Create Pull-request" when looking at your forked repo on Github.
+
+## Our Process
 Community Garden Manager will utilize JavaScript, Express, and EJS for the front-end portion. This way, the developers can make the web pages more dynamic with an emphasis on functionality. The back end of the website will use Node JS and PostgreSQL. The Node JS will help work with the JavaScript framework while the PostgreSQL will serve as the database for the project.
 
 The installation and setup procedure for our project is similar to most node project setups. To accommodate group work on this project we started by creating a git repository, created and hosted on GitHub, setting it up as a Node template. This will allow group members to clone it locally and allow members to push and pull directly. Our group also took advantage of Git/Git Bash to clone and locally work on this project. 
