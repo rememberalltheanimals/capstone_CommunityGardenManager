@@ -61,6 +61,21 @@ We tested JavaScript literals and embedded JavaScript by creating an index.ejs p
 
 We finished by creating a database on Render to recreate the data and connected the database to the web service on Render, making sure to add our Render url to GitHub to allow for others to view and deploy our website.
 
+Once our website was hosted on Render and our initial Tech Stack was validated we began implementing our agreed upon features, as well as using CSS to style our webpage.
+Our features and current webpages (As of 05/18/2023) include:
+ -  Home Page (with Image based navigation)
+ -  Member's Favorites
+ -  Garden Designer
+ -  Image Gallery
+ -  Gardener Chat
+ -  Zone by ZipCode
+ -  Zone Search
+ -  Plant Search
+ -  About CGM
+ -  Create Account
+
+We will continue to update you on our journey as development continues. To learn more, view [Community Garden Manager](https://community-garden-manager-hs4r.onrender.com/) on Render.com!
+
 ## Issues along the way and To Dos
 One major issue we ran into along the way was lack of APIs to use for our website features. For instance, we were unable to find any APIs that include Hardiness Zone information for garden plants. The only 
 API we found with similar functionality contained information on trees. Therefore, currently, our initial release has a feature to search for plants by your zone, but unfortunately it only contains information on
