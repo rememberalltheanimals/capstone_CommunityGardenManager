@@ -4,6 +4,26 @@ Community Garden Manager is a website that will allow clients to manage a commun
 
 Along with the functionality discussed above, Community Garden Manager will also allow for communication, not only between members of the same community garden, but between all users of the site. Clients will be able to share gardening advice and tips, show off their harvests, and ask gardening related questions. This will allow our users to experience the same sense of community both at the garden and in the comfort of their own home.
 
+## Key Features
+- View a list of other member's favorite plants in Members Favorites
+- Add your own favorites to your profile to share with the community
+- Keep growing tips and notes about your favorite plants
+- Use Member's Favorites to decide which plants to grow in your community garden
+- Poll about what the members’ favorite plants are
+- Design your community garden or individual garden plots with Garden Designer
+- Download your designs for future use
+- View a gallery of images from others Community Gardens
+- Communicate with other members via Gardener Chat
+- Find out your planting zone using your zipcode
+- Search what trees grow best in your zone
+- Learn general information about garden plants, such as sun exposure and sowing method
+- Contact Community Garden Manager Administrators
+- Create a member profile
+- And More ... new features being added constantly!
+
+## How to View and Use Website
+Our website and it's database are being publicly hosted on Render.com. Therefore, if you are interested in accessing our website, feel free to follow this link to [Community Garden Manager](https://community-garden-manager-hs4r.onrender.com/) or search by the URL https://community-garden-manager-hs4r.onrender.com/
+
 ## Installation
 Community Garden Manager will utilize JavaScript, Express, and EJS for the front-end portion. This way, the developers can make the web pages more dynamic with an emphasis on functionality. The back end of the website will use Node JS and PostgreSQL. The Node JS will help work with the JavaScript framework while the PostgreSQL will serve as the database for the project.
 
