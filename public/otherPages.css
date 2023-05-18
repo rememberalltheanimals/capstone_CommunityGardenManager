@@ -291,18 +291,22 @@ table, th, td {
 }
 
 .signUp {
-  position: relative;
+  /*position: relative;
   left: 50px;
   bottom: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
+  /*visibility: hidden;*/
+  margin-left: 40%;
 }
 
 .signUp h1 {
+  /*
   position: relative;
   right: 50px;
+  */
+  margin-left: -75%;
 }
 
 .form_button--signUp {
@@ -335,10 +339,7 @@ table, th, td {
   background-color: rgb(79, 48, 48);
   border: none;
   color: #4CAF50;
-  padding: 17px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 25px;
+  padding: 6px;
   border-radius: 5px;
 
 }
@@ -452,10 +453,7 @@ blockquote p {
     background-color: rgb(79, 48, 48);
     border: none;
     color: #4CAF50;
-    padding-top: 30px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 25px;
+    padding: 6px;
     border-radius: 5px;
   
   }

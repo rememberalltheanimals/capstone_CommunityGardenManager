@@ -1,6 +1,8 @@
 <%- include('../shared/header.ejs') %>
   <main>
-    <h2>Welcome to Community Garden Manager's Login and Sign Up Page</h2>
+    <h2>Welcome to Community Garden Manager's Membership Sign Up Page</h2>
+
+    <!--
     <div class="login">
       <form action="" class="form" id="login">
         <h1 class="form_title">Login</h1>
@@ -24,30 +26,43 @@
           <a class="form_link" onclick="createAccount()">Create an account</a>
         </p>
     </div>
+
+  -->
+
     <div class="signUp">
       <form class="form" id="signUp">
-        <h1 class="form_title">Sign Up</h1>
+        <h1 class="form_title">Create Member Account</h1>
+
         <div class="form_input">
-          <input type="text" class="form_input--input" id="name" autofocus placeholder="Name">
+          <input type="text" class="form_input--input" id="name" autofocus placeholder="Name" oninput="goodName()">
         </div>
+        <div id="goodName"></div>
         <div class="form_input">
-          <input type="text" class="form_input--input" id="userName" autofocus placeholder="Username">
+          <input type="text" class="form_input--input" id="userName" autofocus placeholder="Username" oninput="goodUsername()">
         </div>
+        <div id="goodUsername"></div>
         <div class="form_input">
-          <input type="text" class="form_input--input" id="email" autofocus placeholder="Email">
+          <input type="text" class="form_input--input" id="email" autofocus placeholder="Email" oninput="goodEmail()">
         </div>
+        <div id="goodEmail"></div>
         <div class="form_input">
-          <input type="text" class="form_input--input" id="phoneNumber" autofocus placeholder="Phone Number">
+          <input type="text" class="form_input--input" id="phoneNumber" autofocus placeholder="Phone Number" oninput="goodPhone()">
         </div>
+        <div id="goodPhone"></div>
         <div class="form_input">
-          <input type="text" class="form_input--input" id="zipCode" autofocus placeholder="Zip Code">
+          <input type="text" class="form_input--input" id="zipCode" autofocus placeholder="Zip Code" oninput="goodZip()">
         </div>
+        <div id="goodZip"></div>
         <div class="form_input">
           <input type="text" class="form_input--input" id="gardenTime" autofocus placeholder="Garden Time">
         </div>
+        <div id="goodGardenTime"></div>
+
         <div class="form_input">
-          <input type="password" class="form_input--input" id="password" autofocus placeholder="Password">
+          <input type="password" class="form_input--input" id="password" autofocus placeholder="Password" oninput="goodPassword()">
         </div>
+        <div id="goodPassword"></div>
+
         <div class="form_input">
           <input type="password" class="form_input--input" id="confirmPassword" autofocus placeholder="Confirm Password" oninput="confirmPassword()">
         </div>
@@ -75,11 +90,11 @@
 
   <script>
     //Hides Login, shows Sign Up
-    function createAccount() {
-    document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
-    document.getElementsByClassName('login')[0].style.visibility = 'hidden';
-    document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
-  }
+   // function createAccount() {
+   // document.getElementsByClassName('signUp')[0].style.visibility = 'visible';
+    //document.getElementsByClassName('login')[0].style.visibility = 'hidden';
+   // document.getElementsByClassName('forgotCreate')[0].style.visibility = 'hidden';
+  //}
 
 const main = document.querySelector('main')
 
@@ -88,10 +103,99 @@ const Users_username = document.getElementById('userName')
 const Users_email = document.getElementById('email')
 const Users_phoneNumber = document.getElementById('phoneNumber')
 const Users_zipCode = document.getElementById('zipCode')
-const Users_gardentTime = document.getElementById('gardenTime')
+const Users_gardenTime = document.getElementById('gardenTime')
 const Users_password = document.getElementById('password')
 const Users_confirmPassword = document.getElementById('confirmPassword')
 const Users_garden = document.getElementById('gardens')
+
+const GardenTimeDiv = document.getElementById("goodGardenTime");
+
+GardenTimeDiv.textContent = "** Enter times available to garden.";
+GardenTimeDiv.style.color = "dark gray";
+
+function goodName() {
+  var goodName = Users_name.value;
+  var nameLength = goodName.length;
+  var result = document.getElementById("goodName");
+
+  if (nameLength > 2 ) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The name is not long enough.";
+    result.style.color = "red";
+  }
+}
+Users_name.oninput = goodName;
+
+function goodUsername() {
+  var goodUsername = Users_username.value;
+  var usernameLength = goodUsername.length;
+  var result = document.getElementById("goodUsername");
+
+  if (usernameLength > 2 ) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The username is not long enough.";
+    result.style.color = "red";
+  }
+}
+Users_username.oninput = goodUsername;
+
+function goodEmail() {
+  var goodEmail = Users_email.value;
+  var emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+  var result = document.getElementById("goodEmail");
+
+  if (emailRegex.test(goodEmail)) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The email is not valid.";
+    result.style.color = "red";
+  }
+}
+Users_email.oninput = goodEmail;
+
+function goodPhone() {
+  var goodPhone = Users_phoneNumber.value;
+  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  var result = document.getElementById("goodPhone");
+
+  if (phoneRegex.test(goodPhone)) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The phone number is not valid.";
+    result.style.color = "red";
+  }
+}
+Users_phoneNumber.oninput = goodPhone;
+
+function goodPassword() {
+  var goodPassword = Users_password.value;
+  var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  var result = document.getElementById("goodPassword");
+
+  if (passwordRegex.test(goodPassword)) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The password is not strong enough. Must contain lower case, upper case, numeric, and special characters.";
+    result.style.color = "red";
+  }
+}
+Users_password.oninput = goodPassword;
+
+function goodZip() {
+  var goodZip = Users_zipCode.value;
+  var zipCodeRegex = /^[0-9]{5}(?:-[0-9]{4})?$/;
+  var result = document.getElementById("goodZip");
+
+  if (zipCodeRegex.test(goodZip)) {
+    result.textContent ="";
+  } else {
+    result.textContent = "The Zipcode is not valid.";
+    result.style.color = "red";
+  }
+}
+Users_zipCode.oninput = goodZip;
 
 const submitButton = document.getElementById('submitRegister')
 
@@ -108,22 +212,102 @@ function confirmPassword() {
     result.style.color = "red";
   }
 }
+
+  let ValidName;
+  let ValidUsername;
+  let ValidEmail;
+  let ValidPhone;
+  let ValidZip;
+  let ValidGardenTime;
+  let ValidPassword;
+  let ValidGarden;
+
 // Binding the confirmPassword function to the oniput event
 Users_confirmPassword.oninput = confirmPassword;
     
 const subRegister = async function () {
 
+  const untestedName = Users_name.value;
+  const untestedUsername = Users_username.value;
+  const untestedEmail = Users_email.value;
+  const untestedPhone = Users_phoneNumber.value;
+  const untestedZip = Users_zipCode.value;
+  const untestedGardenTime = Users_gardenTime.value;
+  const untestedPassword = Users_password.value;
+  const untestedGarden = Users_garden.value;
+
+  let ValidName;
+  let ValidUsername;
+  let ValidEmail; 
+  let ValidPhone;
+  let ValidZip;
+  let ValidGardenTime;
+  let ValidPassword;
+  let ValidGarden;
+
+  if (untestedName != null && untestedName != '' && untestedName.length > 2 && untestedUsername != null && untestedUsername != '' && untestedUsername.length > 2 && untestedGardenTime != null && untestedGardenTime != '' && untestedGardenTime.length > 2) {
+    ValidName = untestedName;
+    ValidUsername = untestedUsername;
+    ValidGardenTime = untestedGardenTime;
+    
+  } else {
+    ValidName = null;
+    ValidUsername = null;
+    ValidGardenTime = null;
+  }
+
+  const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+
+  if (emailRegex.test(untestedEmail)) {
+    ValidEmail = untestedEmail
+  } else {
+    ValidEmail = null
+  }
+
+  const zipCodeRegex = /^[0-9]{5}(?:-[0-9]{4})?$/;
+  if (zipCodeRegex.test(untestedZip)) {
+    ValidZip = untestedZip
+  } else {
+    ValidZip = null
+  }
+
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if (phoneRegex.test(untestedPhone)) {
+    ValidPhone = untestedPhone
+  } else {
+    ValidPhone = null
+  }
+
+  const passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  if(passwordRegex.test(untestedPassword)){
+    ValidPassword = untestedPassword
+  } else {
+    ValidPassword = null
+  }
+
+
+  var password2 = Users_confirmPassword.value;
+  var ValidAndConfirmedPassword
+
+  if (ValidPassword === password2) {
+    ValidAndConfirmedPassword = ValidPassword
+  } else {
+    ValidAndConfirmedPassword = null
+  }
 
   main.innerHTML = '<h1>Please wait</h1>'
 
-  const name = Users_name.value;
-  const username = Users_username.value;
-  const email = Users_email.value;
-  const phone = Users_phoneNumber.value;
-  const zip = Users_zipCode.value;
-  const gardenTime = Users_gardentTime.value;
-  const password = Users_password.value;
-  const garden = Users_garden.value
+  //Automatically selects one
+  ValidGarden = untestedGarden;
+  
+  const name = ValidName;
+  const username = ValidUsername;
+  const email = ValidEmail;
+  const phone = ValidPhone;
+  const zip = ValidZip;
+  const gardenTime = ValidGardenTime;
+  const password = ValidAndConfirmedPassword;
+  const garden = ValidGarden;
 
 
   const data = {
@@ -149,12 +333,13 @@ const subRegister = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = `<h1 id="signUpSuccess">Success! Welcome ${username}, your account has been created.</h1>`
+      main.innerHTML = `<h1 id="signUpSuccess">Success! Welcome ${username}, your account has been created.</h1>
+                        <h3 class="comingSoon">Coming Soon: A future update will allow you to access exclusive content with your member account!`
       return
     }
   }
 
-  main.innerHTML = '<h1 id="signUpFail">Server error</h1>'
+  main.innerHTML = '<h1 id="signUpFail">Server error: Please be sure to enter valid data.</h1>'
 
 
 }
