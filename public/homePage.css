@@ -10,6 +10,7 @@
   font-size: 70px;
   text-align: center;
   color: #000;
+  font-family: 'Times New Roman', Times, serif;
 }
 
  body {
@@ -67,13 +68,24 @@
    transition: .4s color;
  }
  
- /* Do we want to get rid of the blur effect 
- div#columns:hover figure:not(:hover) {
-   opacity: 0.4;
- }
- */
+ #desktopNav #loginButton {
+  background-color: rgb(79, 48, 48);
+  border: none;
+  color: #4CAF50;
+  padding: 17px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
 
- /* Could do color on hover instead */
+}
+
+#desktopNav #loginButton:hover {
+  background-color: #8A0000;
+  border-color: #000;
+  color: #FFF;
+}
+
  div#columns:hover figure:hover {
   background-color: rgba(2, 75, 57, 0.651);
 }
@@ -100,19 +112,9 @@
   color: #FFF;
 }
 
-#introDesktop h3 {
-  position: relative;
-  bottom: 80px;
-}
-
-#introDesktop h4 {
-  position: relative;
-  bottom: 80px;
-}
-
 #desktopNav {
   margin: 10px auto;
-  width: 1000px;
+  width: 1100px;
   
 }
 
@@ -156,7 +158,7 @@
   color: #FFF;
 }
 
-@media screen and (max-width: 1100px) { 
+@media screen and (max-width: 1150px) { 
   #logButton {
     position: relative;
     left: -510px;
@@ -183,7 +185,7 @@
   }
 }
 
-@media screen and (max-width: 960px) { 
+@media screen and (max-width: 1150px) { 
   #desktopNav, #logButton {
     display: none;
    }

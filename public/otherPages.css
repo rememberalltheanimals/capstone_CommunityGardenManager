@@ -23,7 +23,7 @@ main {
   border-radius: 115px;
   color: #000;
   margin: 10px auto;
-  width: 1090px;
+  width: 1060px;
   
 }
 
@@ -286,8 +286,8 @@ table, th, td {
 }
 
 #resultNameImg{
-  position: relative;
-  left: 5px;
+ margin-left: -10%;
+ border: thick double rgba(2, 75, 57);
 }
 
 .signUp {
@@ -572,4 +572,8 @@ blockquote p {
   #zoneSearchResultsHeader {
     margin-left: -10% ;
   }
+
+  #resultNameImg{
+    margin-left: -50%;
+   }
 }
