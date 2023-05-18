@@ -42,12 +42,10 @@ To contribute, either email us directly at CommunityGardenManagerCGM@gmail.com, 
 - Commit your changes, and push it to your forked repo
 - Click "Create Pull-request" when looking at your forked repo on Github.
 
-## Our Process
+## Our Initial Process
 Community Garden Manager will utilize JavaScript, Express, and EJS for the front-end portion. This way, the developers can make the web pages more dynamic with an emphasis on functionality. The back end of the website will use Node JS and PostgreSQL. The Node JS will help work with the JavaScript framework while the PostgreSQL will serve as the database for the project.
 
 The installation and setup procedure for our project is similar to most node project setups. To accommodate group work on this project we started by creating a git repository, created and hosted on GitHub, setting it up as a Node template. This will allow group members to clone it locally and allow members to push and pull directly. Our group also took advantage of Git/Git Bash to clone and locally work on this project. 
-
-To accomplish this, it involved ensuring that our SSH keys were set up correctly, allowing communication between the GitHub repository and Git Bash on our local systems, that is when authenticated correctly.
 
 Once we had a copy or clone of our repository locally, we were able to connect to Pivotal Tracker. This integration between GitHub and Pivotal Tracker will also be essential in accommodating our group work. To accomplish this, an integration was established on Pivotal Tracker and webhooks were added on GitHub using the payload URL and secret key. This allowed for our first test of our tech stack and once it passed successfully, we were able to finish our first chore using correct syntax, story id, and commits and push from Git Bash, proving successful communication.
 
@@ -63,3 +61,20 @@ We tested JavaScript literals and embedded JavaScript by creating an index.ejs p
 
 We finished by creating a database on Render to recreate the data and connected the database to the web service on Render, making sure to add our Render url to GitHub to allow for others to view and deploy our website.
 
+## Issues along the way and To Dos
+One major issue we ran into along the way was lack of APIs to use for our website features. For instance, we were unable to find any APIs that include Hardiness Zone information for garden plants. The only 
+API we found with similar functionality contained information on trees. Therefore, currently, our initial release has a feature to search for plants by your zone, but unfortunately it only contains information on
+trees that grow in that desired zone. This will be updated as new APIs are released and as soon as we find one that is suitable.
+
+Another issue we faced resulted due to simply running out of time, at the moment our create account and login page is rather limited. A user is able to create an account which is saved to the database,
+unfortunately, currenlty, the user account does not unlock any unique features or have much functionality. A user can use this username to add to the favorites, but adding is not limited to only those
+who have an account created. Future releases will restrict certain activities to those who have an account and are logged in.
+
+- Other future feature ideas:
+  - As a user, I should be able to reserve an individual plot in the garden
+  - As a user, I should be able to keep track of the times I completed tasks
+  - As a user, my member profile should allow access to certain blocked pages
+  - As a member gardener, I should be able to vote on which plants are planted in our community garden
+  - As a user, I should be able to post questions and receive feedback from other users
+  - As a user, I should be able to create schedules and checklists to monitor watering schedules, weeding schedules, and more
+  - As a user, I would like to see how much produce was donated for each year
