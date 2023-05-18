@@ -22,7 +22,7 @@ Along with the functionality discussed above, Community Garden Manager will also
 - And More ... new features being added constantly!
 
 ## How to View and Use Website
-Our website and it's database are being publicly hosted on Render.com. Therefore, if you are interested in accessing our website, feel free to follow this link to [Community Garden Manager](https://community-garden-manager-hs4r.onrender.com/) or search by the URL https://community-garden-manager-hs4r.onrender.com/
+Our website and its database are being publicly hosted on Render.com. Therefore, if you are interested in accessing our website, feel free to follow this link to [Community Garden Manager](https://community-garden-manager-hs4r.onrender.com/) or search by the URL https://community-garden-manager-hs4r.onrender.com/
 
 ## Installation (How to contribute)
 To contribute, either email us directly at CommunityGardenManagerCGM@gmail.com, or submit a pull request by following these steps:
@@ -51,11 +51,11 @@ Once we had a copy or clone of our repository locally, we were able to connect t
 
 From there, we were able to create the Node.js skeleton for our project. Once inside the directory, using Git Bash, we were simply able to install the node package manager, using the command ‘npm init –yes’. This not only installed the package manager, but also created the skeleton and accepted all defaults. At this point, we were able to use the node package manager to install the modules, or packages, that we would need for our project. 
 
-We installed express, for our web server framework, EJS, for embedded JavaScript with the web server, Path, to easily manipulate the paths on the webserver, dotenv, to use environment variables to control access to the database, and PG, for accessing Postgres. This completed the basic framework for our project.
+We installed express, for our web server framework, EJS, for embedded JavaScript with the web server, Path, to easily manipulate the paths on the web server, dotenv, to use environment variables to control access to the database, and PG, for accessing Postgres. This completed the basic framework for our project.
 
 The next step was creating web pages. The first was our server.js page, which we used to set up and access the modules and packages that we installed, as well as setting up a port for our web server to listen to. We also used server.js for communication with the express web server and configured it and the paths for it. We finished the configuration by establishing that we were to use EJS for our view engine.
 
-Then was time to validate the tech stack by making a simple webpage with some functionality that would not only use express and EJS to create an html webpage with functionality, but also needed to test communication between the webpage and the database in various ways including Select, Insert, and Delete. To accomplish this, we created a very simple page that created buttons by getting information from the database and when clicked, Inserted information regarding number of times the water had been watered that month. Quite simple, but this allowed us to test all systems and software in our technology stack.
+Then was time to validate the tech stack by making a simple webpage with some functionality that would not only use express and EJS to create an html webpage with functionality, but also needed to test communication between the webpage and the database in various ways including Select, Insert, and Delete. To accomplish this, we created a very simple page that created buttons by getting information from the database and when clicked, Inserted information regarding the number of times the water had been watered that month. Quite simple, but this allowed us to test all systems and software in our technology stack.
 
 We tested JavaScript literals and embedded JavaScript by creating an index.ejs page, which also utilized client-side JavaScript. Similarly, we used the Fetch API, created a schema.sql for our database and connected to PostgreSQL making sure to add database support to the server. 
 
@@ -82,9 +82,9 @@ API we found with similar functionality contained information on trees. Therefor
 trees that grow in that desired zone. This will be updated as new APIs are released and as soon as we find one that is suitable.
 
 Another issue we faced resulted due to simply running out of time, at the moment our create account and login page is rather limited. A user is able to create an account which is saved to the database,
-unfortunately, currenlty, the user account does not unlock any unique features or have much functionality. A user can use this username to add to the favorites, but adding is not limited to only those
+unfortunately, currently, the user account does not unlock any unique features or have much functionality. A user can use this username to add to the favorites, but adding is not limited to only those
 who have an account created. Future releases will restrict certain activities to those who have an account and are logged in. Due to it's limited functionality, for now we have decided to eliminate the login
-page, instead having a Create account page that saves the users created account information. The login will reappear when there is useful functionality for it.
+page, instead having a Create account page that saves the user's created account information. The login will reappear when there is useful functionality for it.
 
 - Other future feature ideas:
   - As a user, I should be able to reserve an individual plot in the garden
